@@ -1,0 +1,168 @@
+.dashboard{
+    background-color: #201E1F;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 434px;  
+}
+.dashboard h1{
+    color:white;
+    font-size: 30px;
+    margin: 20px 0px 0px 90px;
+    font-weight: lighter;
+}
+.newDocument{
+    border: 1px solid white;
+    margin: 20px auto;  /* Center the newDocument div horizontally */
+    padding: 20px;
+    width: 300px;
+    height: 250px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    float: left;
+    margin-left: 90px;
+}
+.newDocument p{
+    color: #383637;
+}
+.newLesson{
+    margin: 20px auto;  
+    padding: 20px;
+    width: 250px;
+    height: 200px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    float: left;
+    margin-left: 90px;
+    background-color: #383637;
+}
+.newLesson p{
+    color: #858585;
+}
+.newLesson img{
+    width: 50px;
+    height: 50px;
+    margin-right: 230px;
+}
+
+.newQuiz{
+    margin: 20px auto;  
+    padding: 20px;
+    width: 250px;
+    height: 200px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    float: left;
+    margin-left: 50px;
+    background-color: #383637;
+}
+.newQuiz p{
+    color: #858585;
+}
+.newQuiz img{
+    width: 50px;
+    height: 50px;
+    margin-right: 230px;
+}
+.enterTitle input{
+    height: 50px;
+    width: 626px;
+    margin-left: 90px;
+    border-radius: 5px;
+    background-color: #383637;
+    border: transparent;
+    color: white;
+}
+button{
+    background-color: #F1C41B;
+    float: right;
+    margin-right: 20px;
+    margin-top: 30px;
+    width: 130px;
+    height: 50px;
+    border-radius: 10px;
+    border: transparent;
+    cursor: pointer;
+}
+span{
+    color: white;
+    margin-right: 20px;
+}
+
+.newLesson{
+    margin: 20px auto;  
+    padding: 20px;
+    width: 250px;
+    height: 200px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    float: left;
+    margin-left: 90px;
+    background-color: #383637;
+}
+.newLesson p{
+    color: #858585;
+}
+.newLesson img{
+    width: 50px;
+    height: 50px;
+    margin-right: 230px;
+}
+
+.newQuiz{
+    margin: 20px auto;  
+    padding: 20px;
+    width: 250px;
+    height: 200px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    float: left;
+    margin-left: 50px;
+    background-color: #383637;
+}
+.newQuiz p{
+    color: #858585;
+}
+.newQuiz img{
+    width: 50px;
+    height: 50px;
+    margin-right: 230px;
+}
+
+.newLesson.selected, .newQuiz.selected {
+    background-color: #ffffff; 
+    border: 2px solid #000000; 
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 999; /* Ensure the overlay is on top of other content */
+  }
+
+
+  
+  

@@ -1,0 +1,28 @@
+.sideBar{
+    background-color: #2D2B2C;
+    width: 434px;
+    height: 941px;
+    position: fixed;
+}
+.docu h1{
+    margin: 0px;
+    width: 266px;
+    height: 62px;
+    left: 24px;
+    font-family: Actor;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28.87px;
+    text-align: left;
+    color: white;
+    font-family: 'Sansation Light', sans-serif;
+    margin: 20px 0px 0px 30px;
+}
+.docu img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-right: 30px;
+    float: right;
+    margin-top: -60px;
+}
