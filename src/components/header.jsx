@@ -9,17 +9,17 @@ import createCheckoutSession from '../server/paymongoApi.js';
 //TODO: IMPLEMENT NAVIGATION TO PAYMONGO CHECKOUT SESSION (preferably in token shop or billing info screen)
 //TODO: POSSIBLE BILLING INFO SAVING
 const Header = () => {
-  // const navigate = useNavigate();
   const handleBuyTokens = async () => {
     try {
       //NOTE: PASS ITEM PARAMETER WHEN WE MAKE MORE TOKEN VARIANTS
       const response = await createCheckoutSession();
       
       if (response && response.data) {
+        console.log(response.data.data.id);
+        
         console.log(response.data.data.attributes.checkout_url);
 
-
-        // navigate(response.data.data.attributes.checkout_url);
+        window.open(response.data.data.attributes.checkout_url,'_blank');
       } else {
         console.error("Invalid response data:", response);
       }

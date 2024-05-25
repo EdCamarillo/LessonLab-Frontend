@@ -48,7 +48,7 @@ const createCheckoutSession = () => {
                     show_description: true,
                     show_line_items: true,
                     //TODO: MAKE REAL SUCCESS AND CANCEL URL
-                    success_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley',
+                    success_url: 'https://cdn-attachments.timesofmalta.com/02c58df7f6f1f76f66f4067cd24a572e06cb5ec9-1624095247-17558216-1200x630.jpg',
                     cancel_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley',
 
                     //TODO: MAKE CHECKOUT DESCRIPTION
