@@ -1,15 +1,15 @@
-.header-nav{
+.header-nav {
     background-color: #393738;
     height: 75px;
-    display: flex; 
+    display: flex;
     align-items: center;
 }
-.header-nav img{
+.header-nav img {
     height: 50px;
-    width:50px;
+    width: 50px;
     margin-left: 16px;
 }
-.name{
+.name {
     font-family: 'Sansation Light', sans-serif;
     font-size: 24px;
     font-weight: 300;
@@ -17,11 +17,11 @@
     color: white;
 }
 .profile-button {
-    height: 30px; 
-    width: 30px; 
-    cursor: pointer; 
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
     position: absolute;
     top: 4.5%;
     right: 16px;
-    transform: translateY(-50%); 
-  }
+    transform: translateY(-50%);
+}
