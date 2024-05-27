@@ -10,7 +10,7 @@ import EllipsisBtn from '../assets/ellipsis_btn.png'
 import '../styles/addNewDocumentPopUpWindow.css';
 
 
-const SideBar = () => {
+const SideBarLesson = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const toggleDropdown = (buttonId) => {
@@ -31,7 +31,7 @@ const SideBar = () => {
           <img src={addButton} alt="addButton" className="addButton" />
         </div>
         <div className='dummyItem'>
-          <button className='dummy'>Design Patterns 
+        <Link to="/lesson" className='dummy'>Design Patterns 
             <img 
               src={EllipsisBtn} 
               alt="EllipseBtn" 
@@ -49,7 +49,7 @@ const SideBar = () => {
               </ul>
               </div>
             )}
-          </button>
+          </Link>
           <button className='dummy'>Generic Algorithms 
             <img 
               src={EllipsisBtn} 
@@ -75,4 +75,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default SideBarLesson;

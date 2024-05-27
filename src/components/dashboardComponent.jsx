@@ -6,7 +6,7 @@ import Quiz from '../assets/quiz.png';
 import '../styles/addNewDocumentPopUpWindow.css';
 import addNewDocument from '../assets/addNewDocument.png';
 
-const Dashboard = () => {
+const DashboardComponent = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -75,4 +75,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardComponent;
