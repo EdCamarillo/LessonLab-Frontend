@@ -9,7 +9,7 @@ const SideBar = () => {
       <div className="sideBar">
         <div className="docu">
           <h1>My documents</h1>
-          <img src={addButton} alt="addButton" className="addButton" />
+          <img src={addButton} alt="Add" className="addButton" />
         </div>
       </div>
     </div>

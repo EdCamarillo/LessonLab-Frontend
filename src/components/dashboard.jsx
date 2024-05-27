@@ -27,7 +27,7 @@ const Dashboard = () => {
           <div className="newDocument" onClick={togglePopup}>
             <img
               src={addNewDocument}
-              alt="addNewDocument"
+              alt="New document"
               className="addNewDocument"
             />
             <p>New Document</p>
@@ -48,7 +48,7 @@ const Dashboard = () => {
                 }`}
                 onClick={() => handleOptionSelect('lesson')}
               >
-                <img src={Lesson} alt="addLesson" className="addLesson" />
+                <img src={Lesson} alt="New lesson" className="addLesson" />
                 <p>Lesson</p>
               </div>
 
@@ -58,7 +58,7 @@ const Dashboard = () => {
                 }`}
                 onClick={() => handleOptionSelect('quiz')}
               >
-                <img src={Quiz} alt="addQuiz" className="addQuiz" />
+                <img src={Quiz} alt="New quiz" className="addQuiz" />
                 <p>Quiz</p>
               </div>
 
