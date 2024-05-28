@@ -2,16 +2,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import '../styles/sideBar.css';
 import addButton from '../assets/addButton.png';
-import Download from '../assets/download.png'
-import Import from '../assets/import.png'
-import Rename from '../assets/rename.png'
-import Delete from '../assets/delete.png'
-import EllipsisBtn from '../assets/ellipsis_btn.png'
 import '../styles/addNewDocumentPopUpWindow.css';
-import DocumentDropdownMenu from './documentDropdownMenu';
-
+import DocumentItem from './documentItem';
 
 const SideBar = () => {
+
+  const documents = ['Design Patterns', 'Genetic Algorithms'] // TODO: fetch documents here
+
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const toggleDropdown = (buttonId) => {
@@ -32,24 +29,9 @@ const SideBar = () => {
           <img src={addButton} alt="Add" className="addButton" />
         </div>
         <div className='dummyItem'>
-          <button className='dummy'>Design Patterns 
-            <img 
-              src={EllipsisBtn} 
-              alt="EllipseBtn" 
-              className="EllipseBtn" 
-              onClick={() => toggleDropdown("designPatterns")} 
-            />
-            <DocumentDropdownMenu name='designPatterns' activeDropdown={activeDropdown} type='Lesson'/>
-          </button>
-          <button className='dummy'>Genetic Algorithms 
-            <img 
-              src={EllipsisBtn} 
-              alt="EllipseBtn" 
-              className="EllipseBtn" 
-              onClick={() => toggleDropdown("geneticAlgorithms")} 
-            />
-            <DocumentDropdownMenu name='geneticAlgorithms' activeDropdown={activeDropdown} type='Lesson'/>
-          </button>
+          {documents.map((document, index) => (
+            <DocumentItem key={index}  name={document} activeDropdown={activeDropdown} type='Lesson' toggleDropdown={toggleDropdown} />
+          ))}
         </div>
       </div>
     </div>
