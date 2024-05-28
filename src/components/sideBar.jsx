@@ -8,6 +8,7 @@ import Rename from '../assets/rename.png'
 import Delete from '../assets/delete.png'
 import EllipsisBtn from '../assets/ellipsis_btn.png'
 import '../styles/addNewDocumentPopUpWindow.css';
+import DocumentDropdownMenu from './documentDropdownMenu';
 
 
 const SideBar = () => {
@@ -38,36 +39,16 @@ const SideBar = () => {
               className="EllipseBtn" 
               onClick={() => toggleDropdown("designPatterns")} 
             />
-            {activeDropdown === "designPatterns" && (
-              <div className="dropdown-menu">
-                <ul className='dropdown-item'>
-                  <li><img src={Download} alt="download" className="download" /> Download Lesson</li>
-                  <li><img src={Import} alt="import" className="import" /> Import Lesson</li>
-                  <li><img src={Rename} alt="rename" className="rename" /> Rename Lesson</li>
-                  <li className="horizontal-line"></li>
-                  <li><img src={Delete} alt="delete" className="delete" /> Delete Lesson</li>
-                </ul>
-              </div>
-            )}
+            <DocumentDropdownMenu name='designPatterns' activeDropdown={activeDropdown} type='Lesson'/>
           </button>
-          <button className='dummy'>Generic Algorithms 
+          <button className='dummy'>Genetic Algorithms 
             <img 
               src={EllipsisBtn} 
               alt="EllipseBtn" 
               className="EllipseBtn" 
-              onClick={() => toggleDropdown("genericAlgorithms")} 
+              onClick={() => toggleDropdown("geneticAlgorithms")} 
             />
-            {activeDropdown === "genericAlgorithms" && (
-              <div className="dropdown-menu">
-                <ul className='dropdown-item'>
-                  <li><img src={Download} alt="download" className="download" /> Download Lesson</li>
-                  <li><img src={Import} alt="import" className="import" /> Import Lesson</li>
-                  <li><img src={Rename} alt="rename" className="rename" /> Rename Lesson</li>
-                  <li className="horizontal-line"></li>
-                  <li><img src={Delete} alt="delete" className="delete" /> Delete Lesson</li>
-                </ul>
-              </div>
-            )}
+            <DocumentDropdownMenu name='geneticAlgorithms' activeDropdown={activeDropdown} type='Lesson'/>
           </button>
         </div>
       </div>
