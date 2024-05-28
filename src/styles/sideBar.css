@@ -1,10 +1,10 @@
-.sideBar{
-    background-color: #2D2B2C;
+.sideBar {
+    background-color: #2d2b2c;
     width: 434px;
     height: 941px;
     position: fixed;
 }
-.docu h1{
+.docu h1 {
     margin: 0px;
     width: 266px;
     height: 62px;
@@ -18,7 +18,7 @@
     font-family: 'Sansation Light', sans-serif;
     margin: 20px 0px 0px 30px;
 }
-.docu img{
+.docu img {
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -26,27 +26,27 @@
     float: right;
     margin-top: -60px;
 }
-.EllipseBtn{
+.EllipseBtn {
     width: 20px; /* Adjust width as needed */
     height: auto; /* Adjust height as needed */
     vertical-align: middle;
-    float: right;   
+    float: right;
     margin-right: 10px;
 }
-.dummy{
+.dummy {
     background-color: #383637;
     width: 400px;
     color: white;
     font-size: 20px;
-    margin: 10px ; /* Adjust margin as needed */
+    margin: 10px; /* Adjust margin as needed */
     padding: 5px; /* Add padding for better spacing */
 }
 .dummyItem {
     display: flex;
     flex-direction: column; /* Stack items vertically */
     align-items: flex-start; /* Align items to the start of the container */
-  }
-.dropdown-menu{
+}
+.dropdown-menu {
     background-color: #393738;
     width: 220px;
     height: auto;
@@ -55,12 +55,13 @@
     margin-top: 30px;
     border-radius: 10px;
     position: absolute; /* Make the dropdown absolute */
-    z-index: 1; 
+    z-index: 1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-.dropdown-menu ul{
+.dropdown-menu ul {
     padding: 0px !important;
 }
-.dropdown-menu ul li{
+.dropdown-menu ul li {
     color: white;
     padding: 5px;
     list-style-type: none;
@@ -73,8 +74,8 @@
     margin: 5px 0; /* adjust as needed */
     padding: 0; /* optional */
     list-style: none; /* optional, to remove bullet */
-  }
-.dropdown-menu img{
+}
+.dropdown-menu img {
     width: 20px;
     height: 20px;
     margin-right: 15px;

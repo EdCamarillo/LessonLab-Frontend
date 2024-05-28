@@ -46,7 +46,7 @@ const SideBar = () => {
                   <li><img src={Rename} alt="rename" className="rename" /> Rename Lesson</li>
                   <li className="horizontal-line"></li>
                   <li><img src={Delete} alt="delete" className="delete" /> Delete Lesson</li>
-              </ul>
+                </ul>
               </div>
             )}
           </button>
@@ -65,7 +65,7 @@ const SideBar = () => {
                   <li><img src={Rename} alt="rename" className="rename" /> Rename Lesson</li>
                   <li className="horizontal-line"></li>
                   <li><img src={Delete} alt="delete" className="delete" /> Delete Lesson</li>
-              </ul>
+                </ul>
               </div>
             )}
           </button>
