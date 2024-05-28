@@ -64,7 +64,7 @@ const DashboardComponent = () => {
               </div>
 
               <div className="enterTitle">
-                <input placeholder="   Enter a title..."></input>
+                <input className='title-input' placeholder="Enter a title..."></input>
               </div>
 
               <Link to={`/${selectedOption}`}><button>Confirm</button></Link>

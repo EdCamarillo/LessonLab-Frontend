@@ -5,9 +5,9 @@ import DashboardComponent  from '../components/dashboardComponent';
 const Dashboard = () => {
   return (
     <div>
-        <Header />
-        <SideBar />
-        <DashboardComponent />
+      <Header />
+      <SideBar />
+      <DashboardComponent />
     </div>
   )
 }
