@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 import '../styles/dashboard.css';
 import icon from '../assets/icon.png';
 import Lesson from '../assets/lesson.png';
@@ -66,7 +67,7 @@ const DashboardComponent = () => {
                 <input placeholder="   Enter a title..."></input>
               </div>
 
-              <button>Confirm</button>
+              <Link to={`/${selectedOption}`}><button>Confirm</button></Link>
             </div>
           </div>
         )}

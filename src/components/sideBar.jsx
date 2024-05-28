@@ -7,7 +7,7 @@ import DocumentItem from './documentItem';
 
 const SideBar = () => {
 
-  const documents = ['Design Patterns', 'Genetic Algorithms'] // TODO: fetch documents here
+  const documents = ['Design Patterns', 'Genetic Algorithms', 'Blockchain', 'Quantum Computing'] // TODO: fetch documents here
 
   const [activeDropdown, setActiveDropdown] = useState(null);
 
