@@ -10,7 +10,7 @@
     height: 62px;
     left: 24px;
     font-family: Actor;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 28.87px;
     text-align: left;
@@ -19,64 +19,123 @@
     margin: 20px 0px 0px 30px;
 }
 .docu img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
     margin-right: 30px;
     float: right;
     margin-top: -60px;
 }
-.EllipseBtn {
-    width: 20px; /* Adjust width as needed */
-    height: auto; /* Adjust height as needed */
-    vertical-align: middle;
-    float: right;
-    margin-right: 10px;
+.document-item {
+    position: relative; /* Ensure the dropdown is positioned relative to this container */
 }
+
 .dummy {
-    background-color: #383637;
-    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
     color: white;
-    font-size: 20px;
-    margin: 10px; /* Adjust margin as needed */
-    padding: 5px; /* Add padding for better spacing */
+    font-size: 14px;
+    margin: 0px; /* Adjust margin as needed */
+    padding: 15px; /* Add padding for better spacing */
+    border: none; /* Remove default button border */
+    cursor: pointer;
+    height: 40px;
+    width: 400px; /* Adjust width as needed */
+    transition: background-color 0.1s;
+    z-index: 3;
 }
+
+.dummy span {
+    margin-left: 15px;
+}
+
+.document-item:hover .dummy {
+    background-color: #393738; /* Add hover effect for better UX */
+}
+
 .dummyItem {
     display: flex;
     flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the start of the container */
+    align-items: center; /* Align items to the start of the container */
 }
+
+.lesson-icon {
+    color: #7e7b7d;
+}
+
+.quiz-icon {
+    color: #7e7b7d;
+}
+
+.more-icon {
+    width: 20px; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    cursor: pointer;
+    margin-left: auto; /* Push the icon to the far right */
+    opacity: 0;
+    transition: opacity 0.1s;
+    color: #7e7b7d;
+    border-radius: 5px;
+    z-index: 3;
+}
+
+.more-icon:hover {
+    background-color: #494748;
+    transition: background-color 0.2s;
+}
+
+.document-item:hover .more-icon {
+    opacity: 1;
+}
+
 .dropdown-menu {
     background-color: #393738;
     width: 220px;
-    height: auto;
     padding: 10px;
-    margin-left: 155px;
-    margin-top: 30px;
     border-radius: 10px;
     position: absolute; /* Make the dropdown absolute */
-    z-index: 1;
+    top: calc(100% + 5px); /* Position below the button with some space */
+    right: 0; /* Align to the right edge of the parent container */
+    z-index: 2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
 .dropdown-menu ul {
-    padding: 0px !important;
+    padding: 0px;
+    z-index: 2;
 }
+
 .dropdown-menu ul li {
     color: white;
     padding: 5px;
     list-style-type: none;
     display: flex;
-    /* flex-direction: column; */
-    align-items: flex-start;
+    align-items: center;
+    z-index: 2;
 }
+
 .horizontal-line {
-    border-top: 1px solid #767676; /* or any other color */
-    margin: 5px 0; /* adjust as needed */
-    padding: 0; /* optional */
-    list-style: none; /* optional, to remove bullet */
+    border-top: 1px solid #767676;
+    margin: 5px 0;
+    padding: 0;
+    list-style: none;
 }
+
 .dropdown-menu img {
     width: 20px;
     height: 20px;
     margin-right: 15px;
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1; /* Ensure the overlay is on top of everything else */
+  }
+  
