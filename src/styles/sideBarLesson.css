@@ -1,6 +1,6 @@
-.sideBar {
+.sideBar-lesson {
     background-color: #2d2b2c;
-    width: 434px;
+    width: 400px;
     height: 100hv;
     position: fixed;
 }
@@ -34,15 +34,15 @@
     margin-right: 10px;
     margin-top: -55px;
 }
-.dummy {
+.dummy-lesson {
     background-color: #383637;
     width: 400px;
     color: white;
-    font-size: 20px;
+    font-size: 14px;
     margin: 10px; /* Adjust margin as needed */
     padding: 5px; /* Add padding for better spacing */
 }
-.dummyItem {
+.dummyItem-lesson {
     display: flex;
     flex-direction: column; /* Stack items vertically */
     align-items: flex-start; /* Align items to the start of the container */

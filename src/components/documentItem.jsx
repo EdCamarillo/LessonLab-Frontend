@@ -31,10 +31,10 @@ const DocumentItem = (props) => {
 
   return (
     <div className='document-item' ref={dropdownRef}>
-      <button className='dummy' onClick={handleClick}>
+      <button className='dummy'>
         {getIcon()}
         <span>{props.name}</span>
-        <MoreHoriz className="more-icon" />
+        <MoreHoriz className="more-icon" onClick={handleClick}/>
       </button>
       <DocumentDropdownMenu name={props.name} activeDropdown={props.activeDropdown} type={props.type} />
     </div>
