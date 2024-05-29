@@ -1,20 +1,44 @@
-import React from 'react'
-import '../styles/sideBar.css'
-import EllipsisBtn from '../assets/ellipsis_btn.png'
+import React, { useRef, useEffect } from 'react';
+import '../styles/sideBar.css';
+import { ImportContactsOutlined, ArticleOutlined, MoreHoriz } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
 
 const DocumentItem = (props) => {
+  const dropdownRef = useRef(null);
+
+  const getIcon = () => {
+    if (props.type === 'Lesson') {
+      return <ImportContactsOutlined className="lesson-icon" />;
+    } else if (props.type === 'Quiz') {
+      return <ArticleOutlined className="quiz-icon" />;
+    }
+    return null;
+  };
+
+  const toggleDropdown = () => {
+    props.toggleDropdown(props.name);
+  };
+
+  const handleClick = () => {
+    if (props.activeDropdown === props.name) {
+      // If dropdown is already active, toggle it off
+      toggleDropdown(null);
+    } else {
+      // Otherwise, toggle it on
+      toggleDropdown(props.name);
+    }
+  };
+
   return (
-    <button className='dummy'>{props.name} 
-      <img 
-        src={EllipsisBtn} 
-        alt="EllipseBtn" 
-        className="EllipseBtn" 
-        onClick={() => props.toggleDropdown(props.name)} 
-      />
+    <div className='document-item' ref={dropdownRef}>
+      <button className='dummy' onClick={handleClick}>
+        {getIcon()}
+        <span>{props.name}</span>
+        <MoreHoriz className="more-icon" />
+      </button>
       <DocumentDropdownMenu name={props.name} activeDropdown={props.activeDropdown} type={props.type} />
-    </button>
-  )
+    </div>
+  );
 }
 
-export default DocumentItem
+export default DocumentItem;
