@@ -7,11 +7,16 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Dashboard from './pages/dashboard.jsx'
 import Lesson from './pages/lesson.jsx'
 import Quiz from './pages/quiz.jsx'
+import LoginPage from './pages/login.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Dashboard />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage/>,
   },
   {
     path: '/lesson',
