@@ -1,7 +1,7 @@
 .sideBar-lesson {
     background-color: #2d2b2c;
-    width: 400px;
-    height: 100hv;
+    width: 434px;
+    height: 870px;
     position: fixed;
 }
 .docu2 h1 {
@@ -26,8 +26,8 @@
     margin-top: 0px;
 }
 .EllipseBtn2 {
-    width: 20px; /* Adjust width as needed */
-    height: auto; /* Adjust height as needed */
+    width: 20px; 
+    height: auto; 
     vertical-align: middle;
     float: right;
     cursor: pointer;
@@ -39,13 +39,13 @@
     width: 400px;
     color: white;
     font-size: 14px;
-    margin: 10px; /* Adjust margin as needed */
-    padding: 5px; /* Add padding for better spacing */
+    margin: 10px; 
+    padding: 5px;
 }
 .dummyItem-lesson {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the start of the container */
+    flex-direction: column; 
+    align-items: flex-start; 
 }
 .dropdown-menu-lesson {
     background-color: #393738;
@@ -55,7 +55,7 @@
     margin-left: 200px;
     margin-top: -25px;
     border-radius: 10px;
-    position: absolute; /* Make the dropdown absolute */
+    position: absolute; 
     z-index: 1;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
@@ -67,14 +67,13 @@
     padding: 5px;
     list-style-type: none;
     display: flex;
-    /* flex-direction: column; */
     align-items: flex-start;
 }
 .horizontal-line {
-    border-top: 1px solid #767676; /* or any other color */
-    margin: 5px 0; /* adjust as needed */
-    padding: 0; /* optional */
-    list-style: none; /* optional, to remove bullet */
+    border-top: 1px solid #767676; 
+    margin: 5px 0; 
+    padding: 0; 
+    list-style: none;
 }
 .dropdown-menu-lesson img {
     width: 20px;
@@ -83,10 +82,10 @@
     margin-top: 0px;
 }
 .line {
-    border-top: 1px solid #767676; /* or any other color */
-    margin: -15px 20px; /* adjust as needed */
-    padding: 0; /* optional */
-    list-style: none; /* optional, to remove bullet */
+    border-top: 1px solid #767676;
+    margin: -15px 20px; 
+    padding: 0; 
+    list-style: none; 
 }
 .files h1, .specifications h1, .pages h1 {
     margin: 0px;
