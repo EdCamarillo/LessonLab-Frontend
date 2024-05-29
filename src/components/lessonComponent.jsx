@@ -6,7 +6,7 @@ import '../styles/lesson.css';
 const LessonComponent = () => {
   return (
     <div id="header-container">
-      <h1> This is lesson generatation</h1>
+      <h1>Lesson</h1>
     </div>
   );
 };

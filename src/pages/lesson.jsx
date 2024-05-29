@@ -1,12 +1,12 @@
 import Header from '../components/header';
-// import SideBarLesson from '../components/sideBarLesson';
+import SideBarLesson from '../components/sideBarLesson';
 import LessonComponent from '../components/lessonComponent';
 
 const Lesson = () => {
   return (
     <div>
         <Header />
-        {/* <SideBarLesson /> */}
+        <SideBarLesson />
         <LessonComponent />
     </div>
   )

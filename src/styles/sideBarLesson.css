@@ -1,0 +1,129 @@
+.sideBar {
+    background-color: #2d2b2c;
+    width: 434px;
+    height: 100hv;
+    position: fixed;
+}
+.docu2 h1 {
+    margin: 0px;
+    width: 200px;
+    height: 62px;
+    left: 44px;
+    font-family: Actor;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28.87px;
+    text-align: left;
+    color: white;
+    font-family: 'Sansation Light', sans-serif;
+    margin: 20px 0px 0px 80px;
+}
+.Lesson {
+    width: 30px;
+    height: 30px;
+    margin-left: 40px;
+    float: left;
+    margin-top: 0px;
+}
+.EllipseBtn2 {
+    width: 20px; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    vertical-align: middle;
+    float: right;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: -55px;
+}
+.dummy {
+    background-color: #383637;
+    width: 400px;
+    color: white;
+    font-size: 20px;
+    margin: 10px; /* Adjust margin as needed */
+    padding: 5px; /* Add padding for better spacing */
+}
+.dummyItem {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start of the container */
+}
+.dropdown-menu-lesson {
+    background-color: #393738;
+    width: 190px;
+    height: auto;
+    padding: 10px;
+    margin-left: 200px;
+    margin-top: -25px;
+    border-radius: 10px;
+    position: absolute; /* Make the dropdown absolute */
+    z-index: 1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.dropdown-menu-lesson ul {
+    padding: 0px !important;
+}
+.dropdown-menu-lesson ul li {
+    color: white;
+    padding: 5px;
+    list-style-type: none;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: flex-start;
+}
+.horizontal-line {
+    border-top: 1px solid #767676; /* or any other color */
+    margin: 5px 0; /* adjust as needed */
+    padding: 0; /* optional */
+    list-style: none; /* optional, to remove bullet */
+}
+.dropdown-menu-lesson img {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    margin-top: 0px;
+}
+.line {
+    border-top: 1px solid #767676; /* or any other color */
+    margin: -15px 20px; /* adjust as needed */
+    padding: 0; /* optional */
+    list-style: none; /* optional, to remove bullet */
+}
+.files h1, .specifications h1, .pages h1 {
+    margin: 0px;
+    width: 200px;
+    height: 62px;
+    left: 44px;
+    font-family: Actor;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28.87px;
+    text-align: left;
+    color: white;
+    font-family: 'Sansation Light', sans-serif;
+    margin: 30px 0px 0px 20px;
+}
+.files{
+    height: 25%;
+}
+.specifications, .pages{
+    height: 15%;
+    margin-top: 30px;
+}
+.addFile{
+    border: 1px dashed #8D8D8D;
+    border-width: 3px;
+    width: 280px;
+    height: 170px;
+    margin-left: 70px;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; 
+    margin-top: -30px;
+}
+.addFile p{
+    color: #8D8D8D;
+    font-size: 13px;
+    text-align: center; 
+    margin-top: 60px;
+}
+

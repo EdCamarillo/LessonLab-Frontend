@@ -2,8 +2,16 @@
     background-color: #393738;
     height: 75px;
     display: flex;
+    position: relative;
     align-items: center;
 }
+.header-container {
+    position: fixed !important;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999; 
+  }
 .header-nav img {
     height: 50px;
     width: 50px;
@@ -21,7 +29,7 @@
     width: 32px;
     cursor: pointer;
     position: absolute;
-    top: 4.5%;
+    top: 50%;
     right: 16px;
     transform: translateY(-50%);
 }
