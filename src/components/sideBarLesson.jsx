@@ -26,7 +26,7 @@ const SideBarLesson = () => {
 
   return (
     <div id="sideBar-container" style={{ userSelect: 'none' }}>
-      <div className="sideBar">
+      <div className="sideBar-lesson">
         <div className="docu2">
         <img src={Lesson2} alt="lesson" className="Lesson" />
           <h1>Design Patters</h1>
