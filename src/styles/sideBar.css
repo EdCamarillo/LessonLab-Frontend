@@ -1,28 +1,145 @@
-.sideBar{
-    background-color: #2D2B2C;
-    width: 434px;
+.sideBar {
+    background-color: #2d2b2c;
+    width: 400px;
     height: 941px;
     position: fixed;
+    box-sizing: border-box;
+    padding: 10px;
 }
-.docu h1{
+.docu {
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    display: flex;
+}
+.docu h1 {
     margin: 0px;
-    width: 266px;
-    height: 62px;
     left: 24px;
     font-family: Actor;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 28.87px;
     text-align: left;
     color: white;
     font-family: 'Sansation Light', sans-serif;
-    margin: 20px 0px 0px 30px;
 }
-.docu img{
-    width: 30px;
-    height: 30px;
+.docu img {
+    width: 25px;
+    height: 25px;
     cursor: pointer;
-    margin-right: 30px;
-    float: right;
-    margin-top: -60px;
+    margin-left: auto;
 }
+.document-item {
+    position: relative; /* Ensure the dropdown is positioned relative to this container */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dummy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    margin: 0px; /* Adjust margin as needed */
+    padding: 13px; /* Add padding for better spacing */
+    border: none; /* Remove default button border */
+    cursor: pointer;
+    height: 40px;
+    width: 100%;
+    transition: background-color 0.1s;
+    z-index: 3;
+}
+
+.dummy span {
+    margin-left: 15px;
+}
+
+.document-item:hover .dummy {
+    background-color: #393738; /* Add hover effect for better UX */
+}
+
+.dummyItem {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Align items to the start of the container */
+}
+
+.lesson-icon {
+    color: #7e7b7d;
+}
+
+.quiz-icon {
+    color: #7e7b7d;
+}
+
+.more-icon {
+    width: 20px; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    cursor: pointer;
+    margin-left: auto; /* Push the icon to the far right */
+    opacity: 0;
+    transition: opacity 0.1s;
+    color: #7e7b7d;
+    border-radius: 5px;
+    z-index: 3;
+}
+
+.more-icon:hover {
+    background-color: #494748;
+    transition: background-color 0.2s;
+}
+
+.document-item:hover .more-icon {
+    opacity: 1;
+}
+
+.dropdown-menu {
+    background-color: #393738;
+    width: 220px;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute; /* Make the dropdown absolute */
+    top: calc(100% + 5px); /* Position below the button with some space */
+    right: 0; /* Align to the right edge of the parent container */
+    z-index: 2;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.dropdown-menu ul {
+    padding: 0px;
+    z-index: 2;
+}
+
+.dropdown-menu ul li {
+    color: white;
+    padding: 5px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.horizontal-line {
+    border-top: 1px solid #767676;
+    margin: 5px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dropdown-menu img {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
+
+.dropdown-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 999; /* Ensure the overlay is on top of everything else */
+  }
+  

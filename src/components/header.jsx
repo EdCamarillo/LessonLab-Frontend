@@ -1,13 +1,10 @@
-import icon from '../assets/icon.png'
+import icon from '../assets/icon.png';
 import profileIcon from '../assets/profileIcon.png';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/header.css';
 import '../styles/addNewDocumentPopUpWindow.css';
 import createCheckoutSession from '../server/paymongoApi.js';
 
-
-//TODO: IMPLEMENT NAVIGATION TO PAYMONGO CHECKOUT SESSION (preferably in token shop or billing info screen)
-//TODO: POSSIBLE BILLING INFO SAVING
 const Header = () => {
   const handleBuyTokens = async () => {
     try {
@@ -29,8 +26,7 @@ const Header = () => {
   };
   
   return (
-    <div id="header-container">
-     
+    <div id="header-container" style={{ userSelect: 'none' }}>
       <div className="header-nav | font-black">
         <img src={icon} alt="icon" />
         <span className="name">LessonLab</span>
@@ -40,7 +36,7 @@ const Header = () => {
         <img src={profileIcon} alt="Profile" className="profile-button"/> 
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

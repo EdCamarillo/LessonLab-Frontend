@@ -1,19 +1,45 @@
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
 import '../styles/sideBar.css';
 import addButton from '../assets/addButton.png';
-import '../styles/addNewDocumentPopUpWindow.css';
+import DocumentItem from './documentItem';
 
 const SideBar = () => {
-  return (
-    <div id="sideBar-container">
-      <div className="sideBar">
-         <div className='docu'>
-            <h1>My documents</h1>
-            <img src={addButton} alt="addButton" className="addButton" />
-         </div>
-      </div>
-    </div>
-  )
-}
+  const documents = [
+    { name: 'Design Patterns', type: 'Lesson' },
+    { name: 'Genetic Algorithms', type: 'Quiz' },
+    { name: 'Blockchain', type: 'Lesson' },
+    { name: 'Quantum Computing', type: 'Lesson' },
+  ]
 
-export default SideBar
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const toggleDropdown = (buttonId) => {
+    setActiveDropdown(activeDropdown === buttonId ? null : buttonId);
+  };
+
+  const handleOverlayClick = () => {
+    setActiveDropdown(null); // Close the dropdown menu
+  };
+
+  return (
+    <div id="sideBar-container" style={{ userSelect: 'none' }}>
+      <div className="sideBar">
+        <div className="docu">
+          <h1>My documents</h1>
+          <img src={addButton} alt="Add" className="addButton" />
+        </div>
+        <div className='dummyItem'>
+          {documents.map((document, index) => (
+            <DocumentItem key={index} name={document.name} type={document.type} activeDropdown={activeDropdown} toggleDropdown={toggleDropdown} />
+          ))}
+        </div>
+      </div>
+      {/* Invisible overlay */}
+      {activeDropdown && (
+        <div className="dropdown-menu-overlay" onClick={handleOverlayClick}></div>
+      )}
+    </div>
+  );
+};
+
+export default SideBar;

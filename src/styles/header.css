@@ -1,27 +1,34 @@
-.header-nav{
+.header-nav {
     background-color: #393738;
-    height: 75px;
-    display: flex; 
+    height: 50px;
+    display: flex;
+    position: relative;
     align-items: center;
 }
-.header-nav img{
-    height: 50px;
-    width:50px;
+#header-container {
+    position: fixed !important;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999; 
+  }
+.header-nav img {
+    height: 30px;
+    width: 30px;
     margin-left: 16px;
 }
-.name{
+.name {
     font-family: 'Sansation Light', sans-serif;
-    font-size: 24px;
-    font-weight: 300;
+    font-size: 18px;
+    font-weight: 200;
     margin: 0 0 0 20px;
     color: white;
 }
 .profile-button {
-    height: 30px; 
-    width: 30px; 
-    cursor: pointer; 
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
     position: absolute;
-    top: 4.5%;
     right: 16px;
     transform: translateY(-50%); 
   }
