@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/sideBar.css';
 import { ImportContactsOutlined, ArticleOutlined, MoreHoriz } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
+import zIndex from '@mui/material/styles/zIndex';
 
 const DocumentItem = (props) => {
   const toggleDropdown = () => {
@@ -25,7 +26,7 @@ const DocumentItem = (props) => {
         <span>{props.name}</span>
         <MoreHoriz className="more-icon" onClick={handleClick}/>
       </button>
-      <DocumentDropdownMenu name={props.name} activeDropdown={props.activeDropdown} type={props.type} />
+      <DocumentDropdownMenu name={props.name} activeDropdown={props.activeDropdown} type={props.type} style={{ zIndex: 1000 }}/>
     </div>
   );
 }

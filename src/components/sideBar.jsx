@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/sideBar.css';
 import addButton from '../assets/addButton.png';
 import DocumentItem from './documentItem';
+import zIndex from '@mui/material/styles/zIndex';
 
 const SideBar = () => {
   const documents = [
@@ -35,7 +36,7 @@ const SideBar = () => {
         </div>
       </div>
       {activeDropdown 
-        ? <div className='dropdown-menu-overlay' onClick={handleOverlayClick}></div>
+        ? <div className='dropdown-menu-overlay' onClick={handleOverlayClick} style={{ zIndex: 999 }}></div>
         : <></>
       }
     </div>
