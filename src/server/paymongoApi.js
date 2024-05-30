@@ -1,25 +1,30 @@
 import axios from 'axios';
 
 //NOTE: POSSIBLE ITEM PARAMETER FOR OTHER ITEM VARIANTS
-const createCheckoutSession = () => {
+const generateReferenceNumber = () => {
+    const timestamp = Date.now();
+    return timestamp.toString();
+};
+
+const createCheckoutSession = (item) => {
+    console.log(item);
     const options = {
         method: 'POST',
         url: 'https://api.paymongo.com/v1/checkout_sessions',
         headers: {
             accept: 'application/json',
             'content-type': 'application/json',
-            authorization: 'Basic c2tfdGVzdF9OR2NkSGNSUEJGN3NvRmFDVE1rdUs1RWU6' //encoded key
+            authorization: 'Basic c2tfdGVzdF9OR2NkSGNSUEJGN3NvRmFDVE1rdUs1RWU6MTIzNDU2Nzg5MA==' //encoded key
         },
         data: {
             data: {
                 attributes: {
                     line_items: [
                         {
-                            //TODO: MAKE TOKEN PRODUCT WITH COMPLETE ATTRIBUTES
-                            amount: 11111,
-                            currency: 'PHP',
-                            description: 'Eeeeee',
-                            name: 'E Token',
+                            amount: item.amount,
+                            currency: item.currency,
+                            description: item.description,
+                            name: item.name,
                             quantity: 1
                         }
                     ],
@@ -43,7 +48,7 @@ const createCheckoutSession = () => {
                     payment_method_types: ['gcash'],
 
                     //TODO: MAKE REFERENCE NUMBER GENERATOR (maybe timestamp-based)
-                    reference_number: '123456789',
+                    reference_number: generateReferenceNumber(),
                     send_email_receipt: true,
                     show_description: true,
                     show_line_items: true,
