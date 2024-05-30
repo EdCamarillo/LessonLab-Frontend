@@ -17,12 +17,24 @@
     width: 30px;
     margin-left: 16px;
 }
+
+.logo{
+    position: relative;
+    width: 100px;
+    left: 5px;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
 .name {
     font-family: 'Sansation Light', sans-serif;
     font-size: 18px;
     font-weight: 200;
-    margin: 0 0 0 20px;
+    margin: 5px 0 0 10px;
     color: white;
+    position: absolute;
 }
 .profile-button {
     height: 20px;
