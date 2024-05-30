@@ -96,7 +96,7 @@
 
 .dropdown-menu {
     background-color: #393738;
-    width: 220px;
+    width: 200px;
     padding: 10px;
     border-radius: 10px;
     position: absolute; /* Make the dropdown absolute */
@@ -110,15 +110,31 @@
     padding: 0px;
 }
 
+.dropdown-item {
+    margin: 0;
+}
+
 .dropdown-menu ul li {
     color: white;
-    padding: 5px;
     list-style-type: none;
     display: flex;
     align-items: center;
 }
 
-.dropdown-menu:hover ul li {
+.dropdown-menu-button {
+    display: flex;
+    color: white;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 13px;
+    margin: 0px;
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    align-items: center;
+}
+
+.dropdown-menu-button:hover {
     background-color: #494748;
 }
 

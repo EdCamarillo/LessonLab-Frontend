@@ -31,14 +31,10 @@ const SideBar = () => {
         </div>
         <div className='dummyItem'>
           {documents.map((document, index) => (
-            <DocumentItem key={index} name={document.name} type={document.type} activeDropdown={activeDropdown} toggleDropdown={toggleDropdown} />
+            <DocumentItem key={index} name={document.name} type={document.type} activeDropdown={activeDropdown} toggleDropdown={toggleDropdown}/>
           ))}
         </div>
       </div>
-      {activeDropdown 
-        ? <div className='dropdown-menu-overlay' onClick={handleOverlayClick} style={{ zIndex: 999 }}></div>
-        : <></>
-      }
     </div>
   );
 };

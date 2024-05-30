@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import '../styles/sideBar.css';
 import { ImportContactsOutlined, ArticleOutlined, MoreHoriz } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
-import zIndex from '@mui/material/styles/zIndex';
 
 const DocumentItem = (props) => {
+  const dropdownRef = useRef(null);
+
   const toggleDropdown = () => {
     props.toggleDropdown(props.name);
   };
@@ -19,14 +20,32 @@ const DocumentItem = (props) => {
     }
   };
 
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      props.toggleDropdown(null);
+    }
+  };
+
+  useEffect(() => {
+    if (props.activeDropdown === props.name) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [props.activeDropdown]);
+
   return (
-    <div className='document-item'>
+    <div className='document-item' ref={dropdownRef}>
       <button className='dummy'>
         {props.type === 'Lesson' ? <ImportContactsOutlined className="lesson-icon" /> : <ArticleOutlined className="quiz-icon" />}
         <span>{props.name}</span>
         <MoreHoriz className="more-icon" onClick={handleClick}/>
       </button>
-      <DocumentDropdownMenu name={props.name} activeDropdown={props.activeDropdown} type={props.type} style={{ zIndex: 1000 }}/>
+      <DocumentDropdownMenu name={props.name} activeDropdown={props.activeDropdown} type={props.type} />
     </div>
   );
 }
