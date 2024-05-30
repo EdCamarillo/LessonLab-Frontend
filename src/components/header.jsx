@@ -5,6 +5,7 @@ import '../styles/header.css';
 import '../styles/addNewDocumentPopUpWindow.css';
 import { Overlay } from './overlay.jsx';
 import { Item } from './item.jsx'
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isShopOpen, setIsShopOpen] = useState(false);
@@ -29,7 +30,7 @@ const Header = () => {
   const closeShop = ()=>{
     setIsShopOpen(!isShopOpen)
   }
-
+  const navigate = useNavigate();
   //TENTATIVE ITEMS, SHOULD BE REAL ITEMS DATA
   const items = [
     { name: '5 Tokens', amount: 5000, currency:'PHP', description: 'Scammy Tokens used to generate lesson and quiz.' },
@@ -43,8 +44,10 @@ const Header = () => {
   return (
     <div id="header-container" style={{ userSelect: 'none' }}>
       <div className="header-nav | font-black">
-        <img src={icon} alt="icon" />
-        <span className="name">LessonLab</span>
+        <div className="logo" onClick={()=>navigate('/')}>
+          <img src={icon} alt="icon" />
+          <span className="name">LessonLab</span>
+        </div>
         <button className='buy-button' onClick={closeShop}>Shop</button>
         <Overlay isOpen={isShopOpen} onClose={closeShop} overlayName={"Token Shop"}>
           <div className='items'>
