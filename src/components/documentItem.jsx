@@ -1,20 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import '../styles/sideBar.css';
 import { ImportContactsOutlined, ArticleOutlined, MoreHoriz } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
 
 const DocumentItem = (props) => {
-  const dropdownRef = useRef(null);
-
-  const getIcon = () => {
-    if (props.type === 'Lesson') {
-      return <ImportContactsOutlined className="lesson-icon" />;
-    } else if (props.type === 'Quiz') {
-      return <ArticleOutlined className="quiz-icon" />;
-    }
-    return null;
-  };
-
   const toggleDropdown = () => {
     props.toggleDropdown(props.name);
   };
@@ -30,9 +19,9 @@ const DocumentItem = (props) => {
   };
 
   return (
-    <div className='document-item' ref={dropdownRef}>
+    <div className='document-item'>
       <button className='dummy'>
-        {getIcon()}
+        {props.type === 'Lesson' ? <ImportContactsOutlined className="lesson-icon" /> : <ArticleOutlined className="quiz-icon" />}
         <span>{props.name}</span>
         <MoreHoriz className="more-icon" onClick={handleClick}/>
       </button>

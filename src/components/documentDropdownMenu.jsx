@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import '../styles/sideBar.css'
 import Download from '../assets/download.png'
 import Import from '../assets/import.png'

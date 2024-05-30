@@ -34,10 +34,10 @@ const SideBar = () => {
           ))}
         </div>
       </div>
-      {/* Invisible overlay */}
-      {activeDropdown && (
-        <div className="dropdown-menu-overlay" onClick={handleOverlayClick}></div>
-      )}
+      {activeDropdown 
+        ? <div className='dropdown-menu-overlay' onClick={handleOverlayClick}></div>
+        : <></>
+      }
     </div>
   );
 };
