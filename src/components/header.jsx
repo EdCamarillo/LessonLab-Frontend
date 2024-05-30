@@ -45,7 +45,7 @@ const Header = () => {
       <div className="header-nav | font-black">
         <img src={icon} alt="icon" />
         <span className="name">LessonLab</span>
-        <button className='buy-button' onClick={closeShop}>Buy Tokens</button>
+        <button className='buy-button' onClick={closeShop}>Shop</button>
         <Overlay isOpen={isShopOpen} onClose={closeShop} overlayName={"Token Shop"}>
           <div className='items'>
           {items.map((item, index) => (

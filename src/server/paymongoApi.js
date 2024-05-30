@@ -1,20 +1,20 @@
 import axios from 'axios';
 
-//NOTE: POSSIBLE ITEM PARAMETER FOR OTHER ITEM VARIANTS
 const generateReferenceNumber = () => {
     const timestamp = Date.now();
     return timestamp.toString();
 };
 
 const createCheckoutSession = (item) => {
+    console.log(process.env.REACT_APP_PM_API_KEY);
     console.log(item);
     const options = {
         method: 'POST',
         url: 'https://api.paymongo.com/v1/checkout_sessions',
         headers: {
             accept: 'application/json',
-            'content-type': 'application/json',
-            authorization: 'Basic c2tfdGVzdF9OR2NkSGNSUEJGN3NvRmFDVE1rdUs1RWU6MTIzNDU2Nzg5MA==' //encoded key
+            'Content-type': 'application/json',
+            authorization: `Basic ${process.env.REACT_APP_PM_API_KEY}` //encoded key
         },
         data: {
             data: {
