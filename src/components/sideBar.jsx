@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../styles/sideBar.css';
 import addButton from '../assets/addButton.png';
 import DocumentItem from './documentItem';
-import zIndex from '@mui/material/styles/zIndex';
 
 const SideBar = () => {
   const documents = [
@@ -16,10 +15,6 @@ const SideBar = () => {
 
   const toggleDropdown = (buttonId) => {
     setActiveDropdown(activeDropdown === buttonId ? null : buttonId);
-  };
-
-  const handleOverlayClick = () => {
-    setActiveDropdown(null); // Close the dropdown menu
   };
 
   return (

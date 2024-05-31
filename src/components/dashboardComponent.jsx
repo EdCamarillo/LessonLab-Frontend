@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import '../styles/dashboard.css';
 import icon from '../assets/icon.png';
 import Lesson from '../assets/lesson.png';
 import Quiz from '../assets/quiz.png';
 import '../styles/addNewDocumentPopUpWindow.css';
 import addNewDocument from '../assets/addNewDocument.png';
+import { Close } from '@mui/icons-material';
 
 const DashboardComponent = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
+  const navigate = useNavigate();
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
-    setSelectedOption(null); // Reset selected option when popup is toggled
+    setSelectedOption(null);
   };
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
+  };
+
+  const handleConfirmClick = () => {
+    if (selectedOption) {
+      navigate(`/${selectedOption}`);
+    }
   };
 
   return (
@@ -38,7 +46,7 @@ const DashboardComponent = () => {
           <div className="popup-container">
             <div className="popup-content">
               <span className="popup-close" onClick={togglePopup}>
-                X
+                <Close/>
               </span>
               <img src={icon} alt="icon" />
               <h2>You'd like to create a...</h2>
@@ -67,7 +75,7 @@ const DashboardComponent = () => {
                 <input className='title-input' placeholder="Enter a title..."></input>
               </div>
 
-              <Link to={`/${selectedOption}`}><button>Confirm</button></Link>
+              <button onClick={handleConfirmClick} disabled={!selectedOption}>Confirm</button>
             </div>
           </div>
         )}
