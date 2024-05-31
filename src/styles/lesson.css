@@ -3,12 +3,12 @@
     width: 100%;
     height: 100%;
     margin-left: 434px;
-    margin-top: 50px;
+    margin-top: 0px;
     background-color: #201E1F;
 }
-#lesson-container h1{
+/* #lesson-container h1{
     color: red;
-}
+} */
 .lesson-docu{
     width: 50%;
     height: 83%;

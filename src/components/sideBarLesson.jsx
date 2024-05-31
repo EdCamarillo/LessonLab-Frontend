@@ -7,6 +7,7 @@ import Import from '../assets/import.png'
 import Rename from '../assets/rename.png'
 import Delete from '../assets/delete.png'
 import EllipsisBtn from '../assets/ellipsis_btn.png'
+import AddButton from '../assets/addButton.png'
 import '../styles/addNewDocumentPopUpWindow.css';
 import '../styles/sideBarLesson.css';
 
@@ -61,12 +62,17 @@ const SideBarLesson = () => {
         <div className='specifications'>
         <div className='line'></div>
         <h1>Specifications</h1>
+        <button>
+        <img src={AddButton} alt="Add" className="addButton" />
+        </button>
           
         </div>
         <div className='pages'>
         <div className='line'></div>
         <h1>Pages</h1>
-          
+        <button>
+        <img src={AddButton} alt="Add" className="addButton" />
+        </button>
         </div>
       </div>
     </div>

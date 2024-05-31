@@ -125,4 +125,15 @@
     text-align: center; 
     margin-top: 60px;
 }
+.specifications img, .pages img{
+    width: 25px;
+    height: 25px;
+    padding: 0px;
+}
+.specifications button, .pages button{
+    background-color: transparent;
+    padding: 0px;
+    margin-top: -70px;
+    margin-right: 0px;
+}
 
