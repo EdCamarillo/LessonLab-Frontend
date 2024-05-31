@@ -11,11 +11,11 @@ const DocumentDropdownMenu = (props) => {
       {props.activeDropdown === props.name && (
         <div className="dropdown-menu">
           <ul className='dropdown-item'>
-            <li><img src={Download} alt="download" className="download" /> Download {props.type}</li>
-            <li><img src={Import} alt="import" className="import" /> Import {props.type}</li>
-            <li><img src={Rename} alt="rename" className="rename" /> Rename {props.type}</li>
+            <li><button className='dropdown-menu-button'><img src={Download} alt="download" className="download" /> Download {props.type}</button></li>
+            <li><button className='dropdown-menu-button'><img src={Import} alt="import" className="import" /> Import {props.type}</button></li>
+            <li><button className='dropdown-menu-button'><img src={Rename} alt="rename" className="rename" /> Rename {props.type}</button></li>
             <li className="horizontal-line"></li>
-            <li><img src={Delete} alt="delete" className="delete" /> Delete {props.type}</li>
+            <li><button className='dropdown-menu-button'><img src={Delete} alt="delete" className="delete" /> Delete {props.type}</button></li>
           </ul>
         </div>
       )}

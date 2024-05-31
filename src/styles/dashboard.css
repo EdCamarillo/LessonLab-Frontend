@@ -98,7 +98,6 @@ button {
 }
 span {
     color: white;
-    margin-right: 20px;
 }
 
 .newLesson {
@@ -115,6 +114,7 @@ span {
     float: left;
     margin-left: 90px;
     background-color: #383637;
+    transition: background-color 0.1s;
 }
 .newLesson p {
     color: #858585;
@@ -139,6 +139,7 @@ span {
     float: left;
     margin-left: 50px;
     background-color: #383637;
+    transition: background-color 0.1s;
 }
 .newQuiz p {
     color: #858585;
@@ -149,10 +150,16 @@ span {
     margin-right: 230px;
 }
 
+.newQuiz:hover,
+.newLesson:hover {
+    background-color: #3f3d3e;
+    transition: background-color 0.1s;
+}
+
 .newLesson.selected,
 .newQuiz.selected {
-    background-color: #ffffff;
-    border: 2px solid #000000;
+    background-color: rgb(229, 229, 231);
+    transition: background-color 0.3s;
 }
 .overlay {
     position: fixed;

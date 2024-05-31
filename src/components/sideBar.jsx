@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../styles/sideBar.css';
 import addButton from '../assets/addButton.png';
 import DocumentItem from './documentItem';
-import zIndex from '@mui/material/styles/zIndex';
 
 const SideBar = () => {
   const documents = [
@@ -18,10 +17,6 @@ const SideBar = () => {
     setActiveDropdown(activeDropdown === buttonId ? null : buttonId);
   };
 
-  const handleOverlayClick = () => {
-    setActiveDropdown(null); // Close the dropdown menu
-  };
-
   return (
     <div id="sideBar-container" style={{ userSelect: 'none' }}>
       <div className="sideBar">
@@ -31,14 +26,10 @@ const SideBar = () => {
         </div>
         <div className='dummyItem'>
           {documents.map((document, index) => (
-            <DocumentItem key={index} name={document.name} type={document.type} activeDropdown={activeDropdown} toggleDropdown={toggleDropdown} />
+            <DocumentItem key={index} name={document.name} type={document.type} activeDropdown={activeDropdown} toggleDropdown={toggleDropdown}/>
           ))}
         </div>
       </div>
-      {activeDropdown 
-        ? <div className='dropdown-menu-overlay' onClick={handleOverlayClick} style={{ zIndex: 999 }}></div>
-        : <></>
-      }
     </div>
   );
 };

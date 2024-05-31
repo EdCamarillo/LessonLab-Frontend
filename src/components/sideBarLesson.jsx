@@ -10,6 +10,7 @@ import EllipsisBtn from '../assets/ellipsis_btn.png'
 import AddButton from '../assets/addButton.png'
 import '../styles/addNewDocumentPopUpWindow.css';
 import '../styles/sideBarLesson.css';
+import { MoreHoriz } from '@mui/icons-material';
 
 
 const SideBarLesson = () => {
@@ -31,12 +32,7 @@ const SideBarLesson = () => {
         <div className="docu2">
         <img src={Lesson2} alt="lesson" className="Lesson" />
           <h1>Design Patters</h1>
-          <img 
-              src={EllipsisBtn} 
-              alt="EllipseBtn" 
-              className="EllipseBtn2" 
-              onClick={() => toggleDropdown("designPatterns")} 
-            />
+            <MoreHoriz className='more-icon-lesson' onClick={() => toggleDropdown("designPatterns")}/>
             {activeDropdown === "designPatterns" && (
               <div className="dropdown-menu-lesson">
                 <ul className='dropdown-item'>
