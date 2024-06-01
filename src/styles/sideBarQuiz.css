@@ -87,14 +87,16 @@
 }
 .line {
     border-top: 1px solid #767676;
-    margin-top: 15px; 
+    margin-top: 5px;
+    margin-bottom: 5px; 
     padding: 0; 
     list-style: none; 
 }
+.files {
+    padding: 10px;
+}
 .files h1, .specifications h1, .pages h1 {
     margin: 0px;
-    width: 200px;
-    height: 62px;
     left: 44px;
     font-family: Actor;
     font-size: 20px;
@@ -103,10 +105,12 @@
     text-align: left;
     color: white;
     font-family: 'Sansation Light', sans-serif;
-    margin: 30px 0px 0px 20px;
+    margin: 0px 0px 0px 0px;
 }
 .files{
-    height: 25%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
 }
 .specifications, .pages{
     height: 15%;
@@ -117,11 +121,12 @@
     border-width: 1px;
     width: 280px;
     height: 170px;
-    margin-left: 70px;
+    margin: auto;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     text-align: center; 
-    margin-top: -30px;
+    cursor: pointer;
+    z-index: 100;
 }
 .addFile p{
     color: #8D8D8D;

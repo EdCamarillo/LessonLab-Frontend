@@ -7,7 +7,7 @@ import ClockIcon from '../assets/clockIcon.png';
 import HatIcon from '../assets/hatIcon.png';
 import FIcon from '../assets/fIcon.png';
 import addButton from '../assets/addButton.png';
-import { MoreHoriz, Close } from '@mui/icons-material';
+import { MoreHoriz, Close, Upload, DeleteOutline } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
 import '../styles/sideBarLesson.css';
 import '../styles/specifications.css';
@@ -49,12 +49,54 @@ const SideBarLesson = () => {
     setShowAddFile(true);
   };
 
+  const handleDragEnter = (event) => {
+    event.preventDefault();
+    setShowAddFile(true);
+  };
+
+  const handleDragLeave = () => {
+    setShowAddFile(false);
+  };
+
   const handleDrop = (event) => {
     event.preventDefault();
     setShowAddFile(false);
     const files = Array.from(event.dataTransfer.files).filter(file => file.type === 'application/pdf');
     setUploadedFiles([...uploadedFiles, ...files]);
   };
+
+  const handleRemoveFile = (index) => {
+    const newFiles = uploadedFiles.filter((_, i) => i !== index);
+    setUploadedFiles(newFiles);
+  };
+
+  useEffect(() => {
+    const handleGlobalDragOver = (event) => {
+      event.preventDefault();
+      setShowAddFile(true);
+    };
+
+    const handleGlobalDragEnter = (event) => {
+      event.preventDefault();
+      setShowAddFile(true);
+    };
+
+    const handleGlobalDragLeave = (event) => {
+      if (event.relatedTarget === null) {
+        setShowAddFile(false);
+      }
+    };
+
+    window.addEventListener('dragover', handleGlobalDragOver);
+    window.addEventListener('dragenter', handleGlobalDragEnter);
+    window.addEventListener('dragleave', handleGlobalDragLeave);
+
+    return () => {
+      window.removeEventListener('dragover', handleGlobalDragOver);
+      window.removeEventListener('dragenter', handleGlobalDragEnter);
+      window.removeEventListener('dragleave', handleGlobalDragLeave);
+    };
+  }, []);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -84,6 +126,8 @@ const SideBarLesson = () => {
               style={{ display: showAddFile || uploadedFiles.length === 0 ? 'block' : 'none' }}
               onClick={handleDivClick}
               onDragOver={handleDragOver}
+              onDragEnter={handleDragEnter}
+              onDragLeave={handleDragLeave}
               onDrop={handleDrop}
             >
               <p>No files uploaded yet <br />
@@ -97,14 +141,15 @@ const SideBarLesson = () => {
                 onChange={handleFileChange}
               />
             </div>
-            {uploadedFiles.length > 0 && (
+            {uploadedFiles.length > 0 && !showAddFile && (
               <div className='uploaded-files'>
                 {uploadedFiles.map((file, index) => (
                   <div key={index} className='uploaded-file'>
                     {file.name}
+                    <DeleteOutline className='remove-file-button' onClick={() => handleRemoveFile(index)}/>
                   </div>
                 ))}
-                <button className='upload-new-button' onClick={handleDivClick}>Upload New</button>
+                <button className='upload-new-button' onClick={handleDivClick}><Upload/> Upload New</button>
               </div>
             )}
           </div>

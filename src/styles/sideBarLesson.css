@@ -93,14 +93,16 @@
 }
 .line {
     border-top: 1px solid #767676;
-    margin-top: 15px; 
+    margin-top: 5px;
+    margin-bottom: 5px; 
     padding: 0; 
     list-style: none; 
 }
+.files {
+    padding: 10px;
+}
 .files h1, .specifications h1, .pages h1 {
     margin: 0px;
-    width: 200px;
-    height: 62px;
     left: 44px;
     font-family: Actor;
     font-size: 20px;
@@ -109,10 +111,58 @@
     text-align: left;
     color: white;
     font-family: 'Sansation Light', sans-serif;
-    margin: 30px 0px 0px 20px;
+    margin: 0px 0px 0px 0px;
 }
 .files{
-    height: 25%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.uploaded-file {
+    display: flex;
+    background-color: #393738;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 7px;
+}
+.upload-new-button {
+    display: flex;
+    background-color: #393738;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 7px;
+    gap: 8px;
+}
+.upload-new-button:hover, .remove-file-button:hover {
+    background-color: #494748;
+    transition: background-color 0.1s;
+}
+.remove-file-button {
+    color: rgb(204, 84, 84);
+    border-radius: 5px;
+    opacity: 0;
+}
+.uploaded-file:hover .remove-file-button {
+    opacity: 1;
+    transition: opacity 0.1s;
 }
 .specifications, .pages{
     height: 15%;
@@ -123,11 +173,12 @@
     border-width: 1px;
     width: 280px;
     height: 170px;
-    margin-left: 70px;
+    margin: auto;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    text-align: center; 
-    margin-top: -30px;
+    text-align: center;
+    cursor: pointer; 
+    z-index: 100;
 }
 .addFile p{
     color: #8D8D8D;
