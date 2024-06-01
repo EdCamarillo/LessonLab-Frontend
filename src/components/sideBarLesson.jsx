@@ -9,6 +9,11 @@ import FIcon from '../assets/fIcon.png';
 import addButton from '../assets/addButton.png';
 import { MoreHoriz, Close, Upload, DeleteOutline } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
+import Download from '../assets/download.png';
+import Import from '../assets/import.png';
+import Rename from '../assets/rename.png';
+import Delete from '../assets/delete.png';
+import Note from '../assets/note.png';
 import '../styles/sideBarLesson.css';
 import '../styles/specifications.css';
 
@@ -113,16 +118,16 @@ const SideBarLesson = () => {
           <div className="docu2" ref={dropdownRef}>
             <img src={Lesson2} alt="lesson" className="Lesson" />
             <h1>Design Patterns</h1>
-            <MoreHoriz className='more-icon-lesson' onClick={() => toggleDropdown("designPatterns")} />
+            <MoreHoriz className="more-icon-lesson" onClick={() => toggleDropdown("designPatterns")} />
             {activeDropdown === "designPatterns" && (
-              <DocumentDropdownMenu type={'Lesson'} />
+              <DocumentDropdownMenu type="Lesson" />
             )}
           </div>
-          <div className='line'></div>
-          <div className='files'>
+          <div className="line"></div>
+          <div className="files">
             <h1>Files</h1>
             <div
-              className='addFile'
+              className="addFile"
               style={{ display: showAddFile || uploadedFiles.length === 0 ? 'block' : 'none' }}
               onClick={handleDivClick}
               onDragOver={handleDragOver}
@@ -142,27 +147,27 @@ const SideBarLesson = () => {
               />
             </div>
             {uploadedFiles.length > 0 && !showAddFile && (
-              <div className='uploaded-files'>
+              <div className="uploaded-files">
                 {uploadedFiles.map((file, index) => (
-                  <div key={index} className='uploaded-file'>
+                  <div key={index} className="uploaded-file">
                     {file.name}
-                    <DeleteOutline className='remove-file-button' onClick={() => handleRemoveFile(index)}/>
+                    <DeleteOutline className="remove-file-button" onClick={() => handleRemoveFile(index)} />
                   </div>
                 ))}
-                <button className='upload-new-button' onClick={handleDivClick}><Upload/> Upload New</button>
+                <button className="upload-new-button" onClick={handleDivClick}><Upload /> Upload New</button>
               </div>
             )}
           </div>
-          
-          <div className='specifications'>
-            <div className='line'></div>
+
+          <div className="specifications">
+            <div className="line"></div>
             <h1>Specifications</h1>
             <button onClick={() => togglePopup('specifications')}>
               <img src={AddButton} alt="Add" className="addButton" />
             </button>
           </div>
-          <div className='pages'>
-            <div className='line'></div>
+          <div className="pages">
+            <div className="line"></div>
             <h1>Pages</h1>
             <button onClick={() => togglePopup('pages')}>
               <img src={AddButton} alt="Add" className="addButton" />
@@ -211,11 +216,11 @@ const SideBarLesson = () => {
                   <div className="level">
                     <img src={FIcon} alt="Icon" />
                     <label>
-                      <input type="radio" name="duration" value="elementary" />
+                      <input type="radio" name="duration" value="simple" />
                       Simple
                     </label>
                     <label>
-                      <input type="radio" name="duration" value="highschool" />
+                      <input type="radio" name="duration" value="comprehensive" />
                       Comprehensive
                     </label>
                   </div>
@@ -223,20 +228,35 @@ const SideBarLesson = () => {
                     <img src={BookIcon} alt="Icon" />
                     <textarea type="text" placeholder="Provide learning outcomes..." />
                   </div>
-                  <div className='custom'>
+                  <div className="custom">
                     <button>
-                      <img src={addButton} alt="Icon" id='addCustom' /> Add Custom
+                      <img src={AddButton} alt="Icon" id="addCustom" /> Add Custom
                     </button>
                   </div>
-                  <div className='button'>
+                  <div className="button">
                     <button>Save</button>
                   </div>
                 </>
               )}
               {popupContent === 'pages' && (
                 <>
-                  <h1>Pages Popup Content</h1>
-                  {/* Additional content for pages */}
+                  <h1>Add New Page(s)</h1>
+                  <div className="presets">
+                    <img src={BookIcon} alt="Icon" />
+                    <select>
+                      <option value="" disabled selected>Select specifications presets...</option>
+                    </select>
+                  </div>
+                  <div className="pages">
+                    <img src={Note} alt="Icon" />
+                    <input type="text" placeholder="Set pages..." />
+                  </div>
+                  <div className="buttonAdd">
+                    <button>Add</button>
+                  </div><br />
+                  <div className="button">
+                    <button>Add & Generate</button>
+                  </div>
                 </>
               )}
             </div>
@@ -246,5 +266,6 @@ const SideBarLesson = () => {
     </div>
   );
 };
+
 
 export default SideBarLesson;
