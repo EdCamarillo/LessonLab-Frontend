@@ -22,6 +22,7 @@
     display: flex;
     padding: 10px;
     box-sizing: border-box;
+    position: relative;
 }
 .Lesson {
     width: 24px;
@@ -56,8 +57,7 @@
     width: 190px;
     height: auto;
     padding: 10px;
-    margin-left: 150px;
-    margin-top: 180px;
+    /* top: calc(100% + 5px); */
     border-radius: 10px;
     position: absolute; 
     z-index: 1;
