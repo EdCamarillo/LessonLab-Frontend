@@ -38,6 +38,12 @@
     cursor: pointer;
     margin-left: auto;
     color: white;
+    border-radius: 5px;
+    position: relative;
+}
+.more-icon-lesson:hover {
+    background-color: #393738;
+    transition: background-color 0.2s;
 }
 .dummy-lesson {
     background-color: #383637;
@@ -114,7 +120,7 @@
 }
 .addFile{
     border: 1px dashed #8D8D8D;
-    border-width: 3px;
+    border-width: 1px;
     width: 280px;
     height: 170px;
     margin-left: 70px;
