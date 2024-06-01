@@ -51,7 +51,7 @@
     flex-direction: column; 
     align-items: flex-start; 
 }
-.dropdown-menu-lesson {
+.dropdown-menu-quiz {
     background-color: #393738;
     width: 190px;
     height: auto;

@@ -13,7 +13,8 @@ import HatIcon from '../assets/hatIcon.png'
 import addButton from '../assets/addButton.png'
 import '../styles/sideBarLesson.css';
 import '../styles/specifications.css';
-import { MoreHoriz, Close } from '@mui/icons-material';
+import { MoreHoriz, Close, PropaneSharp } from '@mui/icons-material';
+import DocumentDropdownMenu from './documentDropdownMenu';
 
 const SideBarLesson = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -60,16 +61,8 @@ const SideBarLesson = () => {
           <h1>Design Patters</h1>
           <MoreHoriz className='more-icon-lesson' onClick={() => toggleDropdown("designPatterns")} />
           {activeDropdown === "designPatterns" && (
-            <div className="dropdown-menu-lesson">
-              <ul className='dropdown-item'>
-                <li><img src={Download} alt="download" className="download" /> Download Lesson</li>
-                <li><img src={Import} alt="import" className="import" /> Import Lesson</li>
-                <li><img src={Rename} alt="rename" className="rename" /> Rename Lesson</li>
-                <li className="horizontal-line"></li>
-                <li><img src={Delete} alt="delete" className="delete" /> Delete Lesson</li>
-              </ul>
-            </div>
-          )}
+          <DocumentDropdownMenu type={'Lesson'} />
+        )}
         </div>
         <div className='line'></div>
         <div className='files'>
