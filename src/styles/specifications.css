@@ -40,7 +40,7 @@
     padding-left: 16px;
     padding-right: 16px;
   }
-  .topic input{
+  .topic input, .presets select {
     width: 80%;
     color: #767676;
     background-color: #383637;
@@ -55,7 +55,7 @@
     height: 80px;
     
   }
-  .clock input{
+  .clock input, .pages input{
     width: 25%;
     color: #767676;
     background-color: #383637;
@@ -111,10 +111,23 @@
     background-color: #f1c41b;
     float: right;
     margin-right: 20px;
-    margin-top: -50px;
+    margin-top: -70px;
     width: 130px;
     height: 50px;
     border-radius: 10px;
     border: transparent;
+    cursor: pointer;
+}
+.buttonAdd button {
+    background-color:transparent;
+    border: 1px solid #f1c41b;
+    float: right;
+    margin-right: 180px;
+    margin-top: 250px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
     cursor: pointer;
 }

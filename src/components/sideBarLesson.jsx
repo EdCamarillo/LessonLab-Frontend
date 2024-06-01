@@ -11,6 +11,7 @@ import BookIcon from '../assets/bookIcon.png'
 import ClockIcon from '../assets/clockIcon.png'
 import HatIcon from '../assets/hatIcon.png'
 import addButton from '../assets/addButton.png'
+import Note from '../assets/note.png'
 import '../styles/sideBarLesson.css';
 import '../styles/specifications.css';
 import { MoreHoriz, Close } from '@mui/icons-material';
@@ -164,8 +165,24 @@ const SideBarLesson = () => {
       )}
       {popupContent === 'pages' && (
         <>
-          <h1>Pages Popup Content</h1>
+          <h1>Add New Page(s)</h1>
           {/* Additional content for pages */}
+          <div className="presets">
+            <img src={BookIcon} alt="Icon" />
+           <select>
+           <option value="" disabled selected>Select specifications presets...</option>
+           </select>
+          </div>
+          <div className="pages">
+            <img src={Note} alt="Icon" />
+            <input type="text" placeholder="Set pages..." />
+          </div>
+          <div className='buttonAdd'> 
+          <button>Add</button>
+          </div><br/>
+          <div className='button'> 
+          <button>Add & Generate</button>
+          </div>
         </>
       )}
     </div>
