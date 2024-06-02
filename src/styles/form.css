@@ -1,37 +1,77 @@
-.custom-textfield .MuiOutlinedInput-root{
-    background-color: #c0c0c0;
-    width: 500px;
-    position: absolute;
-}
-
-.custom-textfield .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{
-    border-color: #f1c41b;
-}
-
-.custom-textfield .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
-    border-color: #f1c41b;
-}
-
-.custom-textfield .MuiInputLabel-root.Mui-focused{
-    color: #f1c41b;
-}
-
-.logoInLogin{
-    position: relative;
-    display:flex;
-}
-
-.nameInLogin{
-    position: absolute;
+.container {
+    width: 450px;
+    height: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #5a5a5a;
+    border-radius: 8px;
+    background-color: #383637;
     color: white;
-    left: 60px;
-    font-size: 36px;
-    font-weight: 700;
-    font-family: 'Sansation Light', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.dropdown .MuiOutlinedInput-root{
-    background-color: #c0c0c0;
-    width: 500px;
-    position: absolute;
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.label {
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: white;
+}
+
+.input {
+    width: 100%;
+    min-width: 375px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.input:hover{
+    border-color: #f1c41b;
+}
+
+.input:focus {
+    border-color: #f1c41b;
+    outline-color: #f1c41b;
+  }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #ad8c13;
+    color: white;
+}
+
+.sign-up-button {
+    background-color: #161718;
+    border-radius: 4px;
+    border: 2px solid #f1c41b;
+    color: #fff;
+}
+  
+.sign-up-button:hover {
+    background-color: #ad8c13;
+    border-color: #ad8c13;
 }
