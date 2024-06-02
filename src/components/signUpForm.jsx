@@ -24,13 +24,44 @@ const SignupForm = ({ onSwitchToLogin }) => {
     setUserType(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
     // Handle form submission logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
-    console.log('User Type:', userType);
+    // console.log('Username:', username);
+    // console.log('Password:', password);
+    // console.log('Confirm Password:', confirmPassword);
+    // console.log('User Type:', userType);
+
+    try {
+      const response = await fetch('https://25bc4e982ea440.lhr.life/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+      if (response.ok) {
+        // Registration successful
+        alert("Registration successful!");
+        console.log(response.data);
+        // Optionally, you can redirect the user to another page after successful registration
+        // Example: window.location.href = '/login';
+      } else {
+        // Registration failed
+        alert("Registration failed. Please try again.");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert("An error occurred. Please try again later.");
+    }
   };
   
 
