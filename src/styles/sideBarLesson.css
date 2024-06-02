@@ -119,8 +119,7 @@
     transition: opacity 0.1s;
 }
 .specifications, .pages{
-    height: 35%;
-    padding: 10px;
+    height: 15%;
     display: flex;
     flex-direction: column;
 }

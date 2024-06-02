@@ -36,9 +36,31 @@ const SideBarQuiz = () => {
     }
   };
 
-  const handleFileChange = (event) => {
-    const files = Array.from(event.target.files).filter(file => file.type === 'application/pdf');
-    setUploadedFiles([...uploadedFiles, ...files]);
+  const handleFileChange = async (event) => {
+    const file = Array.from(event.target.files).filter(file => file.type === 'application/pdf');
+    console.log(file);
+    // const files = Array.from(event.target.files).filter(file => file.type === 'application/pdf');
+    // setUploadedFiles([...uploadedFiles, ...files]);
+    try{
+      console.log(process.env.NEXT_PUBLIC_SERVER_URL);
+      const response = await fetch(
+        // `${process.env.NEXT_PUBLIC_SERVER_URL}/api/documents/add`,
+        `https://6b797ecf86a859.lhr.life/api/documents/add`,
+        {
+          method: "POST",
+          body: file,
+        }
+      );
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Files uploaded successfully: ", responseData);
+      } else {
+        throw new Error("Failed to upload files, " + response.statusText);
+      }
+    } catch(error) {
+      console.log(error);
+    }
   };
 
   const handleDivClick = () => {

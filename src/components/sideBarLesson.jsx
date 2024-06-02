@@ -1,17 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AddButton from '../assets/addButton.png';
-import Lesson2 from '../assets/lesson2.png';
 import BookIcon from '../assets/bookIcon.png';
 import ClockIcon from '../assets/clockIcon.png';
 import HatIcon from '../assets/hatIcon.png';
 import FIcon from '../assets/fIcon.png';
-import addButton from '../assets/addButton.png';
 import { MoreHoriz, Close, Upload, DeleteOutline, Add, ImportContactsOutlined } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
 import Note from '../assets/note.png';
 import '../styles/sideBarLesson.css';
-import '../styles/sideBarPopUp.css';
+// import '../styles/specifications.css';
 
 const SideBarLesson = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -109,7 +107,7 @@ const SideBarLesson = () => {
   return (
     <div>
       {popupContent && <div className="overlay" onClick={() => setPopupContent(null)}></div>}
-      <div id="sideBar-container-lesson" style={{ userSelect: 'none' }}>
+      <div id="sideBar-container" style={{ userSelect: 'none' }}>
         <div className="sideBar-lesson">
           <div className="docu2" ref={dropdownRef}>
             <ImportContactsOutlined className="lesson-icon"/>
@@ -242,18 +240,9 @@ const SideBarLesson = () => {
                       <option value="" disabled selected>Select specifications presets...</option>
                     </select>
                   </div>
-                  <div className="AddNewPages">
+                  <div className="pages">
                     <img src={Note} alt="Icon" />
                     <input type="text" placeholder="Set pages..." />
-                    <div className='checkBoxNamePage'>
-                    <input type="checkbox" name="myCheckbox"/>
-                    <label for="checkbox">Name each page</label>
-                    </div>
-                    <div className='checkBoxLimitPage'>
-                    <input type="checkbox" name="myCheckbox"/>
-                    <label for="checkbox">Limit each content to page only</label>
-                    </div>
-                    
                   </div>
                   <div className="buttonAdd">
                     <button>Add</button>

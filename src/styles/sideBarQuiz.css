@@ -5,10 +5,12 @@
     position: fixed;
     box-sizing: border-box;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 .docuQuiz h1 {
-    margin-left: 40px;
-    margin-top:-30px;
+    margin: 0px;
+    margin-left: 20px;
     font-family: Actor;
     font-size: 16px;
     font-weight: 400;
@@ -17,7 +19,7 @@
     color: white;
     font-family: 'Sansation Light', sans-serif;
 }
-.docu2 {
+.docuQuiz {
     align-items: center;
     display: flex;
     padding: 10px;
@@ -57,7 +59,7 @@
     margin: 0px;
     left: 44px;
     font-family: Actor;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 28.87px;
     text-align: left;
@@ -72,7 +74,8 @@
 }
 .specifications, .pages{
     height: 15%;
-    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
 }
 .addFileQuiz{
     border: 1px dashed #8D8D8D;
