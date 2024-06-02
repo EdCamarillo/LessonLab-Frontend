@@ -6,38 +6,30 @@ import '../styles/addNewDocumentPopUpWindow.css';
 import { Overlay } from './overlay.jsx';
 import { Item } from './item.jsx'
 import { useNavigate } from 'react-router-dom';
+import LoginForm from './loginForm.jsx';
 
 const Header = () => {
   const [isShopOpen, setIsShopOpen] = useState(false);
-  // const handleBuyTokens = async () => {
-  //   try {
-  //     //NOTE: PASS ITEM PARAMETER WHEN WE MAKE MORE TOKEN VARIANTS
-  //     const response = await createCheckoutSession();
-      
-  //     if (response && response.data) {
-  //       console.log(response.data.data.id);
-        
-  //       console.log(response.data.data.attributes.checkout_url);
+  const [isLoginFormOpen, setIsLoginFormOpen] = useState(true); //set to False if samok
+  const [isLoggedIn, setIsLoggedIn] = useState(true); //TODO: Handle authentication
 
-  //       window.open(response.data.data.attributes.checkout_url,'_blank');
-  //     } else {
-  //       console.error("Invalid response data:", response);
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const closeLoginForm = () =>{
+    setIsLoginFormOpen(!isLoginFormOpen);
+  }
+
   const closeShop = ()=>{
     setIsShopOpen(!isShopOpen)
   }
+
   const navigate = useNavigate();
+
   //TENTATIVE ITEMS, SHOULD BE REAL ITEMS DATA
   const items = [
-    { name: '5 Tokens', amount: 5000, currency:'PHP', description: 'Scammy Tokens used to generate lesson and quiz.' },
-    { name: '50 Tokens', amount: 50000, currency:'PHP', description: 'Scammy Tokens used to generate lesson and quiz, but more.'},
-    { name: '100 Tokens', amount: 100000, currency:'PHP', description: 'Scammy Tokens used to generate lesson and quiz, but more waste of money.' },
-    { name: '500 Tokens', amount: 500000, currency:'PHP', description: 'Scammy waste of money.' },
-    { name: '1000 Tokens', amount: 1000000, currency:'PHP', description: 'Who would buy this tho?.' },
+    { name: '5 Tokens', amount: 5000, currency:'PHP', description: 'Tokens used to generate lesson and quiz.' },
+    { name: '50 Tokens', amount: 50000, currency:'PHP', description: 'Tokens used to generate lesson and quiz.'},
+    { name: '100 Tokens', amount: 100000, currency:'PHP', description: 'Tokens used to generate lesson and quiz.' },
+    { name: '500 Tokens', amount: 500000, currency:'PHP', description: ' Tokens used to generate lesson and quiz.' },
+    { name: '1000 Tokens', amount: 1000000, currency:'PHP', description: 'Tokens used to generate lesson and quiz.' },
     // Add more items as needed
   ];
 
@@ -49,6 +41,12 @@ const Header = () => {
           <span className="name">LessonLab</span>
         </div>
         <button className='buy-button' onClick={closeShop}>Shop</button>
+        {isLoggedIn ? <button className='login-button' onClick={closeLoginForm}>Login</button> : null}
+        <Overlay isOpen={isLoginFormOpen} onClose={closeLoginForm} overlayName={"Login"}>
+          <div className='items'>
+            <LoginForm/>
+          </div>
+        </Overlay>
         <Overlay isOpen={isShopOpen} onClose={closeShop} overlayName={"Token Shop"}>
           <div className='items'>
           {items.map((item, index) => (
