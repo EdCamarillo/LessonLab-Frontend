@@ -166,8 +166,23 @@
     transition: opacity 0.1s;
 }
 .specifications, .pages{
-    height: 15%;
-    margin-top: 30px;
+    height: 35%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.specifications-header, .pages-header {
+    display: flex;
+    flex-direction: row;
+}
+.add-button {
+    width: 20px; 
+    height: auto; 
+    vertical-align: middle;
+    float: right;
+    cursor: pointer;
+    margin-left: auto;
+    color: white;
 }
 .addFile{
     border: 1px dashed #8D8D8D;
@@ -186,16 +201,5 @@
     font-size: 13px;
     text-align: center; 
     margin-top: 60px;
-}
-.specifications img, .pages img{
-    width: 25px;
-    height: 25px;
-    padding: 0px;
-}
-.specifications button, .pages button{
-    background-color: transparent;
-    padding: 0px;
-    margin-top: -70px;
-    margin-right: -30px;
 }
 

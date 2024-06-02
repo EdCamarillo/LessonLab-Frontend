@@ -7,7 +7,7 @@ import ClockIcon from '../assets/clockIcon.png';
 import HatIcon from '../assets/hatIcon.png';
 import FIcon from '../assets/fIcon.png';
 import addButton from '../assets/addButton.png';
-import { MoreHoriz, Close, Upload, DeleteOutline } from '@mui/icons-material';
+import { MoreHoriz, Close, Upload, DeleteOutline, Add } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
 import Download from '../assets/download.png';
 import Import from '../assets/import.png';
@@ -158,20 +158,19 @@ const SideBarLesson = () => {
               </div>
             )}
           </div>
-
+          <div className="line"></div>
           <div className="specifications">
-            <div className="line"></div>
-            <h1>Specifications</h1>
-            <button onClick={() => togglePopup('specifications')}>
-              <img src={AddButton} alt="Add" className="addButton" />
-            </button>
+            <div className="specifications-header">
+              <h1>Specifications</h1>
+              <Add className="add-button" onClick={() => togglePopup('specifications')}/>
+            </div>
           </div>
+          <div className="line"></div>
           <div className="pages">
-            <div className="line"></div>
-            <h1>Pages</h1>
-            <button onClick={() => togglePopup('pages')}>
-              <img src={AddButton} alt="Add" className="addButton" />
-            </button>
+            <div className="pages-header">
+              <h1>Pages</h1>
+              <Add className="add-button" onClick={() => togglePopup('pages')}/>
+            </div>
           </div>
         </div>
 
