@@ -8,7 +8,7 @@ import Dashboard from './pages/dashboard.jsx'
 import Lesson from './pages/lesson.jsx'
 import Quiz from './pages/quiz.jsx'
 import LoginPage from './pages/login.jsx'
-import RegisterPage from './pages/register.jsx'
+import SignUpPage from './pages/signUp.jsx'
 import CancelPage from './pages/cancelPayment.jsx'
 
 const router = createBrowserRouter([
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
     element: <LoginPage/>,
   },
   {
-    path: '/register',
-    element: <RegisterPage/>,
+    path: '/signUp',
+    element: <SignUpPage/>,
   },
   {
     path: '/lesson',

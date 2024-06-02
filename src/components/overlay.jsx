@@ -1,6 +1,23 @@
+import React, { useEffect } from 'react';
 import '../styles/overlay.css';
 
 export function Overlay({isOpen, onClose, children, overlayName}){
+    useEffect(() => {
+        const handleEscapeKey = (event) => {
+          if (event.key === 'Escape') {
+            onClose();
+          }
+        };
+    
+        if (isOpen) {
+            document.addEventListener('keydown', handleEscapeKey);
+          }
+      
+          return () => {
+            document.removeEventListener('keydown', handleEscapeKey);
+          };
+        }, [isOpen, onClose]);
+
     return(
         <>
         {isOpen?(
