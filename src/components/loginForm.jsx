@@ -21,59 +21,79 @@ const LoginForm = ({ onSwitchToSignUp }) => {
     setUserType(e.target.value);
   };
 
-  const user = {username: username, password: password};
 
-  const handleLogin = async (user) =>{
-    try {
-      const response = login(user);
-      if(response === 400)
-        alert("Invalid username or password");
-      else if(response === null)
-        alert("Login error!");
-      else
-        alert("Login Successful");
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // const handleLogin = async (user) =>{
+  //   try {
+  //     const response = login(user);
+  //     if(response === 400)
+  //       alert("Invalid username or password");
+  //     else if(response === null)
+  //       alert("Login error!");
+  //     else
+  //       alert("Login Successful");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // handleLogin(user);
-    // Handle form submission logic here
-    // console.log('Username:', username);
-    // console.log('Password:', password);
-    // console.log('User Type:', userType);
+    const user = { username, password };
+
     try {
-      const response = await fetch('https://a26eaead00bcc9.lhr.life/api/users/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
-  
-      if (response.ok) {
-        // Registration successful
-        alert("Login successful!");
-        console.log(response.data);
-        // Optionally, you can redirect the user to another page after successful registration
-        // Example: window.location.href = '/login';
-        // window.location.href = '/';
-      } else if (response.status === 400) {
-        // Bad request: username already exists
+      const token = await login(user);
+
+      if (token && token !== 1) {
+        localStorage.setItem('token', token);
+        window.location.href = '/';
+      }else if(token === 1){
         alert("Invalid username or password!");
-      } else {
-        // Registration failed
-        alert("Login failed. Please try again.");
+      } 
+      else {
+        alert("Client error!");
       }
     } catch (error) {
       console.error('Error:', error);
       alert("An error occurred. Please try again later.");
     }
+    // try {
+    //   // const response = await fetch(`${process.env.REACT_APP_BASE_URL}api/users/login`, {
+    //     const response = await fetch(`https://e5a3-112-208-66-166.ngrok-free.app/api/users/login`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       username: username,
+    //       password: password,
+    //     }),
+    //   });
+  
+    //   if (response.ok) {
+    //     console.log(response.data);
+    //     const token = await response.text();
+    //     // const token = data;
+    //     // const token = response.token;
+    //     // const token = response;
+
+    //     // const token = login(user);
+
+    //     if (token) {
+    //       // Store the token (e.g., in local storage)
+    //       localStorage.setItem('token', token);
+    //       window.location.href = '/';
+    //       // Optionally, you can redirect the user to another page after successful login
+    //       // Example: window.location.href = '/dashboard';
+    //     }
+    //   } else if (response.status >= 400) {
+    //     alert("Invalid username or password!");
+    //   } else{
+    //     alert("Login failed. Please try again.");
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    //   alert("An error occurred. Please try again later.");
+    // }
   };
 
   return (

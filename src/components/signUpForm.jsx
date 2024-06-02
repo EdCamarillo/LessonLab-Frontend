@@ -25,7 +25,7 @@ const SignupForm = ({ onSwitchToLogin }) => {
     setUserType(e.target.value);
   };
 
-  const user = {username: username, password: password};
+  // const user = {username: username, password: password};
 
   // const handleSignUp = async (user) =>{
   //   try {
@@ -47,44 +47,52 @@ const SignupForm = ({ onSwitchToLogin }) => {
       alert("Passwords do not match!");
       return;
     }
-    // else{
-    //   handleSignUp(user);
-    // }
-    // Handle form submission logic here
-    // console.log('Username:', username);
-    // console.log('Password:', password);
-    // console.log('Confirm Password:', confirmPassword);
-    // console.log('User Type:', userType);
+
+    const user = {username: username, password: password};
+
     try {
-      const response = await fetch('https://a26eaead00bcc9.lhr.life/api/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
-  
-      if (response.ok) {
-        // Registration successful
-        alert("Registration successful!");
-        console.log(response.data);
-        // Optionally, you can redirect the user to another page after successful registration
-        // Example: window.location.href = '/login';
-        // window.location.href = '/';
-      } else if (response.status === 400) {
-        // Bad request: username already exists
-        alert("Username already exists. Please choose a different username.");
-      } else {
-        // Registration failed
-        alert("Registration failed. Please try again.");
-      }
+      const response = await register(user);
+
+      if(response)
+        window.location.href = '/';
+      else
+        alert("Username already exist!");
     } catch (error) {
       console.error('Error:', error);
       alert("An error occurred. Please try again later.");
     }
+    // try {
+    //   // const response = await fetch(`${process.env.REACT_APP_BASE_URL}api/users/register`, {
+    //     const response = await fetch(`https://e5a3-112-208-66-166.ngrok-free.app/api/users/register`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       username: username,
+    //       password: password,
+    //     }),
+    //   });
+  
+    //   if (response.ok) {
+    //     // Registration successful
+    //     alert("Registration successful!");
+    //     console.log(response.data);
+    //     // Optionally, you can redirect the user to another page after successful registration
+    //     // Example: window.location.href = '/login';
+    //     window.location.href = '/';
+        
+    //   } else if (response.status === 400) {
+    //     // Bad request: username already exists
+    //     alert("Username already exists. Please choose a different username.");
+    //   } else {
+    //     // Registration failed
+    //     alert("Registration failed. Please try again.");
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    //   alert("An error occurred. Please try again later.");
+    // }
   };
   
 
