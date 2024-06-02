@@ -6,8 +6,7 @@ const generateReferenceNumber = () => {
 };
 
 const createCheckoutSession = (item) => {
-    console.log(process.env.REACT_APP_PM_API_KEY);
-    console.log(item);
+
     const options = {
         method: 'POST',
         url: 'https://api.paymongo.com/v1/checkout_sessions',
@@ -53,8 +52,10 @@ const createCheckoutSession = (item) => {
                     show_description: true,
                     show_line_items: true,
                     //TODO: MAKE REAL SUCCESS AND CANCEL URL
-                    success_url: 'https://cdn-attachments.timesofmalta.com/02c58df7f6f1f76f66f4067cd24a572e06cb5ec9-1624095247-17558216-1200x630.jpg',
-                    cancel_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley',
+                    // success_url: 'https://cdn-attachments.timesofmalta.com/02c58df7f6f1f76f66f4067cd24a572e06cb5ec9-1624095247-17558216-1200x630.jpg',
+                    success_url: 'http://localhost:3000/',
+                    //TODO: HANDLE EXPIRE SESSION WHEN CANCEL
+                    cancel_url: `http://localhost:3000/cancel_payment`,
 
                     //TODO: MAKE CHECKOUT DESCRIPTION
                     description: 'checkout description'
@@ -66,4 +67,38 @@ const createCheckoutSession = (item) => {
     return axios.request(options);
 }
 
-export default createCheckoutSession;
+const expireSession = (checkout_session_Id) => {
+    const options = {
+        method: 'POST',
+        headers: {
+          accept: 'application/json',
+          authorization: `Basic ${process.env.REACT_APP_PM_API_KEY}`
+        }
+      };
+      
+      fetch('https://api.paymongo.com/v1/checkout_sessions/checkout_session_Id', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+
+    return axios.request(options);
+}
+
+const getSession = (checkout_session_Id) => {
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          authorization: `Basic ${process.env.REACT_APP_PM_API_KEY}`
+        }
+      };
+      
+      fetch('https://api.paymongo.com/v1/checkout_sessions/checkout_session_id', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+
+    return axios.request(options);
+}
+
+export {createCheckoutSession, expireSession, getSession};
