@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import icon from '../assets/icon.png';
 import '../styles/form.css';
+import { register } from '../server/userController.js';
 
 const SignupForm = ({ onSwitchToLogin }) => {
   const [username, setUsername] = useState('');
@@ -24,6 +25,21 @@ const SignupForm = ({ onSwitchToLogin }) => {
     setUserType(e.target.value);
   };
 
+  const user = {username: username, password: password};
+
+  // const handleSignUp = async (user) =>{
+  //   try {
+  //     const response = register(user);
+  //     if(response === 400)
+  //       alert("Username already exist!");
+  //     else
+  //       alert("Sign-up Successful!");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -31,14 +47,16 @@ const SignupForm = ({ onSwitchToLogin }) => {
       alert("Passwords do not match!");
       return;
     }
+    // else{
+    //   handleSignUp(user);
+    // }
     // Handle form submission logic here
     // console.log('Username:', username);
     // console.log('Password:', password);
     // console.log('Confirm Password:', confirmPassword);
     // console.log('User Type:', userType);
-
     try {
-      const response = await fetch('https://6cea32f6df2b70.lhr.life/api/users/register', {
+      const response = await fetch('https://a26eaead00bcc9.lhr.life/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,17 +66,19 @@ const SignupForm = ({ onSwitchToLogin }) => {
           password: password,
         }),
       });
+  
       if (response.ok) {
         // Registration successful
         alert("Registration successful!");
         console.log(response.data);
         // Optionally, you can redirect the user to another page after successful registration
         // Example: window.location.href = '/login';
-        window.location.href = '/';
-      }else if (response.status === 400) {
+        // window.location.href = '/';
+      } else if (response.status === 400) {
         // Bad request: username already exists
         alert("Username already exists. Please choose a different username.");
       } else {
+        // Registration failed
         alert("Registration failed. Please try again.");
       }
     } catch (error) {

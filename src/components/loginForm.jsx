@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import icon from '../assets/icon.png';
 import '../styles/form.css';
+import {login} from '../server/userController.js';
 
 const LoginForm = ({ onSwitchToSignUp }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('teacher');
+
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -19,14 +21,31 @@ const LoginForm = ({ onSwitchToSignUp }) => {
     setUserType(e.target.value);
   };
 
+  const user = {username: username, password: password};
+
+  const handleLogin = async (user) =>{
+    try {
+      const response = login(user);
+      if(response === 400)
+        alert("Invalid username or password");
+      else if(response === null)
+        alert("Login error!");
+      else
+        alert("Login Successful");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // handleLogin(user);
     // Handle form submission logic here
     // console.log('Username:', username);
     // console.log('Password:', password);
     // console.log('User Type:', userType);
     try {
-      const response = await fetch('https://6cea32f6df2b70.lhr.life/api/users/login', {
+      const response = await fetch('https://a26eaead00bcc9.lhr.life/api/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,17 +55,20 @@ const LoginForm = ({ onSwitchToSignUp }) => {
           password: password,
         }),
       });
+  
       if (response.ok) {
         // Registration successful
         alert("Login successful!");
-        console.log(response.body);
+        console.log(response.data);
         // Optionally, you can redirect the user to another page after successful registration
         // Example: window.location.href = '/login';
-      }else if (response.status === 400) {
+        // window.location.href = '/';
+      } else if (response.status === 400) {
         // Bad request: username already exists
         alert("Invalid username or password!");
       } else {
-        alert("Registration failed. Please try again.");
+        // Registration failed
+        alert("Login failed. Please try again.");
       }
     } catch (error) {
       console.error('Error:', error);
