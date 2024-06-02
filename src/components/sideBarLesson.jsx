@@ -9,13 +9,9 @@ import FIcon from '../assets/fIcon.png';
 import addButton from '../assets/addButton.png';
 import { MoreHoriz, Close, Upload, DeleteOutline, Add, ImportContactsOutlined } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
-import Download from '../assets/download.png';
-import Import from '../assets/import.png';
-import Rename from '../assets/rename.png';
-import Delete from '../assets/delete.png';
 import Note from '../assets/note.png';
 import '../styles/sideBarLesson.css';
-import '../styles/specifications.css';
+import '../styles/sideBarPopUp.css';
 
 const SideBarLesson = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -113,7 +109,7 @@ const SideBarLesson = () => {
   return (
     <div>
       {popupContent && <div className="overlay" onClick={() => setPopupContent(null)}></div>}
-      <div id="sideBar-container" style={{ userSelect: 'none' }}>
+      <div id="sideBar-container-lesson" style={{ userSelect: 'none' }}>
         <div className="sideBar-lesson">
           <div className="docu2" ref={dropdownRef}>
             <ImportContactsOutlined className="lesson-icon"/>
@@ -246,9 +242,18 @@ const SideBarLesson = () => {
                       <option value="" disabled selected>Select specifications presets...</option>
                     </select>
                   </div>
-                  <div className="pages">
+                  <div className="AddNewPages">
                     <img src={Note} alt="Icon" />
                     <input type="text" placeholder="Set pages..." />
+                    <div className='checkBoxNamePage'>
+                    <input type="checkbox" name="myCheckbox"/>
+                    <label for="checkbox">Name each page</label>
+                    </div>
+                    <div className='checkBoxLimitPage'>
+                    <input type="checkbox" name="myCheckbox"/>
+                    <label for="checkbox">Limit each content to page only</label>
+                    </div>
+                    
                   </div>
                   <div className="buttonAdd">
                     <button>Add</button>

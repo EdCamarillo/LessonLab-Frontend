@@ -1,0 +1,195 @@
+.popup-container-lesson {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2D2B2C;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+  width: 800px;
+  height: 500px;
+}
+
+.popup-content-lesson {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.topic, .clock, .gLevel, .level, .learningOutcomes, .itemType {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.itemType{
+  margin-top: 30px;
+}
+
+.popup-container-lesson img{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.title-input {
+  box-sizing: border-box;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.topic input, .presets select {
+  width: 80%;
+  color: #767676;
+  background-color: #383637;
+  border: none;
+  height: 35px;
+}
+.learningOutcomes textarea{
+  width: 80%;
+  color: #767676;
+  background-color: #383637;
+  border: none;
+  height: 80px;
+  
+}
+.AddNewPages{
+  margin-top: 30px;
+}
+.clock input, .AddNewPages input{
+  width: 25%;
+  color: #767676;
+  background-color: #383637;
+  border: none;
+  height: 35px;
+}
+.gLevel input, .level input, .itemType input{
+  background-color: transparent;
+  border: 1px solid white;
+  width: 20px;
+  height: 20px;
+  
+}
+.gLevel label, .level label, .itemType label{
+  color: white;
+  margin-left: 0px;
+  margin-right:30px;
+  width: 150px;
+  
+}
+.gLevel, .level, .itemType{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+h1{
+  color: white;
+  font-size: 30px;
+}
+.dropdown-menu-duration{
+  display: flex;
+  align-items: center;
+  margin-left: 300px;
+  margin-top: -60px;
+  width: 25%;
+  color: #767676;
+  background-color: #383637;
+  border: none;
+  height: 35px;
+}
+.dropdown-menu-duration select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+.popup-container-lesson button{
+ background-color: transparent;
+ color: #858585;
+ width: 200px;
+}
+
+.custom button{
+  margin-right: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.button button, .buttonGenerateItemQuiz button{
+  background-color: #f1c41b;
+  float: right;
+  color: #383637;
+  margin-right: 20px;
+  margin-top: -80px;
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  border: transparent;
+  cursor: pointer;
+}
+.buttonAdd button, .buttonAddItemQuiz button{
+  background-color:transparent;
+  border: 1px solid #f1c41b;
+  float: right;
+  color: #858585;
+  margin-right: 180px;
+  margin-top: 180px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.checkBoxNamePage input, .checkBoxProblemSolving input{
+border: 1px solid white;
+width: 20px;
+height: 20px;
+background-color: none !important;
+}
+.checkBoxNamePage label, .checkBoxProblemSolving label{
+color: white;
+margin-left: 20px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: lighter;
+}
+.checkBoxProblemSolving{
+margin-left: 50px;
+margin-bottom: 75px;
+}
+.checkBoxNamePage{
+width: 25%;
+margin-left: 300px;
+margin-top: -33px;
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+.checkBoxLimitPage input {
+border: 1px solid white !important;
+width: 25px;
+height: 25px;
+background-color: none !important;
+}
+.checkBoxLimitPage label{
+color: white;
+margin-left: 20px;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: lighter;
+}
+.checkBoxLimitPage{
+width: 50%;
+margin-left: 50px;
+margin-top: 30px;
+display: flex;
+flex-direction: row;
+align-items: center;
+}

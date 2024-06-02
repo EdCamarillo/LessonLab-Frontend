@@ -5,12 +5,10 @@
     position: fixed;
     box-sizing: border-box;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
 }
-.docu2 h1 {
-    margin: 0px;
-    margin-left: 20px;
+.docuQuiz h1 {
+    margin-left: 40px;
+    margin-top:-30px;
     font-family: Actor;
     font-size: 16px;
     font-weight: 400;
@@ -24,6 +22,7 @@
     display: flex;
     padding: 10px;
     box-sizing: border-box;
+    position: relative;
 }
 .more-icon-quiz {
     width: 20px; 
@@ -33,58 +32,14 @@
     cursor: pointer;
     margin-left: auto;
     color: white;
+    border-radius: 5px;
+    position: relative;
 }
 .more-icon-quiz:hover {
     background-color: #393738;
     transition: background-color 0.2s;
 }
-.dummy-lesson {
-    background-color: #383637;
-    width: 400px;
-    color: white;
-    font-size: 14px;
-    margin: 10px; 
-    padding: 5px;
-}
-.dummyItem-lesson {
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-start; 
-}
-.dropdown-menu-quiz {
-    background-color: #393738;
-    width: 190px;
-    height: auto;
-    padding: 10px;
-    margin-left: 200px;
-    margin-top: -25px;
-    border-radius: 10px;
-    position: absolute; 
-    z-index: 1;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-.dropdown-menu-lesson ul {
-    padding: 0px !important;
-}
-.dropdown-menu-lesson ul li {
-    color: white;
-    padding: 5px;
-    list-style-type: none;
-    display: flex;
-    align-items: flex-start;
-}
-.horizontal-line {
-    border-top: 1px solid #767676; 
-    margin: 5px 0; 
-    padding: 0; 
-    list-style: none;
-}
-.dropdown-menu-lesson img {
-    width: 20px;
-    height: 20px;
-    margin-right: 15px;
-    margin-top: 0px;
-}
+
 .line {
     border-top: 1px solid #767676;
     margin-top: 5px;
@@ -92,17 +47,17 @@
     padding: 0; 
     list-style: none; 
 }
-.files {
+.filesQuiz {
     padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.files h1, .specifications h1, .pages h1 {
+.filesQuiz h1, .specifications h1, .pages h1 {
     margin: 0px;
     left: 44px;
     font-family: Actor;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 28.87px;
     text-align: left;
@@ -110,26 +65,16 @@
     font-family: 'Sansation Light', sans-serif;
     margin: 0px 0px 0px 0px;
 }
-.specifications, .pages{
-    height: 35%;
-    padding: 10px;
+.files{
+    height: 30%;
     display: flex;
     flex-direction: column;
 }
-.specifications-header, .pages-header {
-    display: flex;
-    flex-direction: row;
+.specifications, .pages{
+    height: 15%;
+    margin-top: 30px;
 }
-.add-button {
-    width: 20px; 
-    height: auto; 
-    vertical-align: middle;
-    float: right;
-    cursor: pointer;
-    margin-left: auto;
-    color: white;
-}
-.addFile{
+.addFileQuiz{
     border: 1px dashed #8D8D8D;
     border-width: 1px;
     width: 280px;
@@ -141,9 +86,60 @@
     cursor: pointer;
     z-index: 100;
 }
-.addFile p{
+.addFileQuiz p{
     color: #8D8D8D;
     font-size: 13px;
     text-align: center; 
     margin-top: 60px;
+}
+.uploaded-files {
+    display: flex;
+    flex-direction: column;
+}
+.uploaded-file {
+    display: flex;
+    background-color: #393738;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 7px;
+}
+.upload-new-button {
+    display: flex;
+    background-color: #393738;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    height: 40px;
+    box-sizing: border-box;
+    margin-bottom: 7px;
+    gap: 8px;
+}
+.upload-new-button:hover, .remove-file-button:hover {
+    background-color: #494748;
+    transition: background-color 0.1s;
+}
+.remove-file-button {
+    color: rgb(204, 84, 84);
+    border-radius: 5px;
+    opacity: 0;
+    cursor: pointer;
+}
+.uploaded-file:hover .remove-file-button {
+    opacity: 1;
+    transition: opacity 0.1s;
 }

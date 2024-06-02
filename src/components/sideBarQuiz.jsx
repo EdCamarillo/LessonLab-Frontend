@@ -1,15 +1,16 @@
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AddButton from '../assets/addButton.png';
+import addButton from '../assets/addButton.png';
+import Lesson2 from '../assets/lesson2.png';
 import BookIcon from '../assets/bookIcon.png';
 import ClockIcon from '../assets/clockIcon.png';
 import HatIcon from '../assets/hatIcon.png';
 import FIcon from '../assets/fIcon.png';
-import { MoreHoriz, Close, Upload, DeleteOutline, Add, ArticleOutlined } from '@mui/icons-material';
+import { MoreHoriz, Close, Upload, DeleteOutline, Add, ArticleOutlined, ImportContactsOutlined   } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
 import Note from '../assets/note.png';
 import '../styles/sideBarQuiz.css';
-import '../styles/specifications.css';
+import '../styles/sideBarPopUp.css';
 
 
 const SideBarQuiz = () => {
@@ -104,24 +105,23 @@ const SideBarQuiz = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
   return (
     <div>
       {popupContent && <div className="overlay" onClick={() => setPopupContent(null)}></div>}
-      <div id="sideBar-container" style={{ userSelect: 'none' }}>
-        <div className="sideBar-lesson">
-          <div className="docu2" ref={dropdownRef}>
-            <ArticleOutlined className="quiz-icon"/>
+    <div id="sideBar-container" style={{ userSelect: 'none' }}>
+      <div className="sideBar-quiz">
+      <div className="docuQuiz" ref={dropdownRef}>
+           <ImportContactsOutlined className="quiz-icon"/>
             <h1>Design Patterns</h1>
             <MoreHoriz className="more-icon-quiz" onClick={() => toggleDropdown("designPatterns")} />
             {activeDropdown === "designPatterns" && (
-              <DocumentDropdownMenu type="Quiz" />
+              <DocumentDropdownMenu type="Lesson" />
             )}
           </div>
-          <div className="line"></div>
-          <div className="files">
-            <h1>Files</h1>
-            <div
+        <div className='line'></div>
+        <div className='filesQuiz'>
+        <h1>Files</h1>
+        <div
               className="addFile"
               style={{ display: showAddFile || uploadedFiles.length === 0 ? 'block' : 'none' }}
               onClick={handleDivClick}
@@ -152,8 +152,9 @@ const SideBarQuiz = () => {
                 <button className="upload-new-button" onClick={handleDivClick}><Upload /> Upload New</button>
               </div>
             )}
-          </div>
-          <div className="line"></div>
+        </div>
+        
+        <div className="line"></div>
           <div className="specifications">
             <div className="specifications-header">
               <h1>Specifications</h1>
@@ -164,12 +165,11 @@ const SideBarQuiz = () => {
           <div className="pages">
             <div className="pages-header">
               <h1>Items</h1>
-              <Add className="add-button" onClick={() => togglePopup('pages')}/>
+              <Add className="add-button" onClick={() => togglePopup('items')}/>
             </div>
           </div>
-        </div>
-
-        {popupContent && (
+    </div>
+    {popupContent && (
           <div className="popup-container-lesson">
             <div className="popup-content-lesson">
               <span className="popup-close" onClick={() => setPopupContent(null)}>
@@ -177,7 +177,7 @@ const SideBarQuiz = () => {
               </span>
               {popupContent === 'specifications' && (
                 <>
-                  <h1>Specifications Name 1</h1>
+                  <h1>Specificationssssss Name 1</h1>
                   <div className="topic">
                     <img src={BookIcon} alt="Icon" />
                     <input type="text" placeholder="Provide a topic..." />
@@ -218,13 +218,13 @@ const SideBarQuiz = () => {
                       Comprehensive
                     </label>
                   </div>
-                  <div className="learningOutcomes">
-                    <img src={BookIcon} alt="Icon" />
-                    <textarea type="text" placeholder="Provide learning outcomes..." />
-                  </div>
+                  <div className='checkBoxProblemSolving'>
+                    <input type="checkbox" name="myCheckbox"/>
+                    <label for="checkbox">Include problem solving</label>
+                    </div>
                   <div className="custom">
                     <button>
-                      <img src={AddButton} alt="Icon" id="addCustom" /> Add Custom
+                    <Add/> Add Custom
                     </button>
                   </div>
                   <div className="button">
@@ -232,23 +232,47 @@ const SideBarQuiz = () => {
                   </div>
                 </>
               )}
-              {popupContent === 'pages' && (
+              {popupContent === 'items' && (
                 <>
-                  <h1>Add New Item(s)</h1>
+                  <h1>Add New Page(s)</h1>
                   <div className="presets">
                     <img src={BookIcon} alt="Icon" />
                     <select>
                       <option value="" disabled selected>Select specifications presets...</option>
                     </select>
                   </div>
-                  <div className="pages">
+                  <div className="AddNewPages">
                     <img src={Note} alt="Icon" />
                     <input type="text" placeholder="Set pages..." />
+                    <div className='checkBoxNamePage'>
+                    <input type="checkbox" name="myCheckbox"/>
+                    <label for="checkbox">Name each page</label>
+                    </div>
+                    <div className="itemType">
+                      <img src={FIcon} alt="Icon" />
+                      <label>
+                        <input type="radio" name="multiplechoice" value="multipleChoice" />
+                        Multiple Choice
+                      </label>
+                      <label>
+                        <input type="radio" name="identification" value="identification" />
+                        Identification
+                      </label>
+                      <label>
+                        <input type="radio" name="trueOrFalse" value="trueOrFalse" />
+                        True or False
+                      </label>
+                      <label>
+                        <input type="radio" name="diverse" value="diverse" />
+                        Diverse
+                      </label>
+                    </div>
+                    
                   </div>
-                  <div className="buttonAdd">
+                  <div className="buttonAddItemQuiz">
                     <button>Add</button>
                   </div><br />
-                  <div className="button">
+                  <div className="buttonGenerateItemQuiz">
                     <button>Add & Generate</button>
                   </div>
                 </>
@@ -256,8 +280,8 @@ const SideBarQuiz = () => {
             </div>
           </div>
         )}
-      </div>
-    </div>
+        </div>
+          </div>
   );
 };
 
