@@ -32,13 +32,13 @@ const SignupForm = ({ onSwitchToLogin }) => {
       return;
     }
     // Handle form submission logic here
-    // console.log('Username:', username);
-    // console.log('Password:', password);
-    // console.log('Confirm Password:', confirmPassword);
-    // console.log('User Type:', userType);
+    console.log('Username:', username);
+    console.log('Password:', password);
+    console.log('Confirm Password:', confirmPassword);
+    console.log('User Type:', userType);
 
     try {
-      const response = await fetch('https://25bc4e982ea440.lhr.life/api/users/register', {
+      const response = await fetch('https://6b797ecf86a859.lhr.life/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,11 +51,14 @@ const SignupForm = ({ onSwitchToLogin }) => {
       if (response.ok) {
         // Registration successful
         alert("Registration successful!");
-        console.log(response.data);
+        console.log(response);
         // Optionally, you can redirect the user to another page after successful registration
         // Example: window.location.href = '/login';
+        // window.location.href = '/';
+      }else if (response.status === 400) {
+        // Bad request: username already exists
+        alert("Username already exists. Please choose a different username.");
       } else {
-        // Registration failed
         alert("Registration failed. Please try again.");
       }
     } catch (error) {
