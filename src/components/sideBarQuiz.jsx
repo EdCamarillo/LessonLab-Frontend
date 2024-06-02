@@ -8,7 +8,7 @@ import FIcon from '../assets/fIcon.png';
 import { MoreHoriz, Close, Upload, DeleteOutline, Add, ArticleOutlined } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
 import Note from '../assets/note.png';
-import '../styles/sideBarLesson.css';
+import '../styles/sideBarQuiz.css';
 import '../styles/specifications.css';
 
 

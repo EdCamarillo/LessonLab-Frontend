@@ -25,7 +25,7 @@
     padding: 10px;
     box-sizing: border-box;
 }
-.more-icon-lesson {
+.more-icon-quiz {
     width: 20px; 
     height: auto; 
     vertical-align: middle;
@@ -33,6 +33,10 @@
     cursor: pointer;
     margin-left: auto;
     color: white;
+}
+.more-icon-quiz:hover {
+    background-color: #393738;
+    transition: background-color 0.2s;
 }
 .dummy-lesson {
     background-color: #383637;
@@ -143,4 +147,3 @@
     text-align: center; 
     margin-top: 60px;
 }
-
