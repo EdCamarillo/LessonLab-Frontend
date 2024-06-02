@@ -96,12 +96,13 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 .files h1, .specifications h1, .pages h1 {
     margin: 0px;
     left: 44px;
     font-family: Actor;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 28.87px;
     text-align: left;

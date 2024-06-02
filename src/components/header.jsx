@@ -10,7 +10,7 @@ import LoginForm from './loginForm.jsx';
 
 const Header = () => {
   const [isShopOpen, setIsShopOpen] = useState(false);
-  const [isLoginFormOpen, setIsLoginFormOpen] = useState(true); //set to False if samok
+  const [isLoginFormOpen, setIsLoginFormOpen] = useState(false); //set to False if samok
   const [isLoggedIn, setIsLoggedIn] = useState(true); //TODO: Handle authentication
 
   const closeLoginForm = () =>{
