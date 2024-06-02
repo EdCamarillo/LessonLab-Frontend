@@ -1,7 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useEffect } from 'react';
-import addButton from '../assets/addButton.png';
-import Lesson2 from '../assets/lesson2.png';
 import BookIcon from '../assets/bookIcon.png';
 import ClockIcon from '../assets/clockIcon.png';
 import HatIcon from '../assets/hatIcon.png';
@@ -11,6 +9,8 @@ import DocumentDropdownMenu from './documentDropdownMenu';
 import Note from '../assets/note.png';
 import '../styles/sideBarQuiz.css';
 import '../styles/sideBarPopUp.css';
+import { v4 as uuidv4 } from 'uuid';
+import { useParams } from 'react-router-dom';
 
 
 const SideBarQuiz = () => {
@@ -21,6 +21,7 @@ const SideBarQuiz = () => {
   const dropdownRef = useRef(null);
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
+  const { materialId } = useParams();
 
   const togglePopup = (content) => {
     setPopupContent(popupContent === content ? null : content);
@@ -41,14 +42,18 @@ const SideBarQuiz = () => {
     console.log(files);
 
     const formData = new FormData();
-    formData.append('namespaceId', "8f6635c0-d562-455c-a357-684c4b449cf4"); // Need to change this into materal ID
-    files.forEach(file => formData.append('files', file));
+    formData.append('materialId', materialId);
+    files.forEach(file => {
+      const fileId = uuidv4();
+      formData.append(fileId, file);
+    });
 
-    console.log(formData.files);
     try {
       const data = await uploadFiles(formData);
       console.log("Files uploaded successfully:", data);
-
+      if (data) {
+        setUploadedFiles([...uploadedFiles, ...files]);
+      }
     } catch (error) {
       console.error("Error uploading files:", error);
       alert(`Failed to upload files. Please try again. ${error}`);
@@ -58,13 +63,13 @@ const SideBarQuiz = () => {
   async function uploadFiles(data) {
     try {
       const response = await fetch(
-        `http://localhost:4003/api/documents/add`,
+        `${process.env.REACT_APP_NEXT_PUBLIC_SERVER_URL}/api/documents/add`,
         {
           method: "POST",
           body: data,
         }
       );
-  
+
       if (response.ok) {
         const responseData = await response.json();
         console.log("Files uploaded successfully:", responseData);
