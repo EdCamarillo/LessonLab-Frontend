@@ -37,31 +37,46 @@ const SideBarQuiz = () => {
   };
 
   const handleFileChange = async (event) => {
-    const file = Array.from(event.target.files).filter(file => file.type === 'application/pdf');
-    console.log(file);
-    // const files = Array.from(event.target.files).filter(file => file.type === 'application/pdf');
-    // setUploadedFiles([...uploadedFiles, ...files]);
-    try{
-      console.log(process.env.NEXT_PUBLIC_SERVER_URL);
+    const files = Array.from(event.target.files).filter(file => file.type === 'application/pdf');
+    console.log(files);
+
+    const formData = new FormData();
+    formData.append('namespaceId', "8f6635c0-d562-455c-a357-684c4b449cf4"); // Need to change this into materal ID
+    files.forEach(file => formData.append('files', file));
+
+    console.log(formData.files);
+    try {
+      const data = await uploadFiles(formData);
+      console.log("Files uploaded successfully:", data);
+
+    } catch (error) {
+      console.error("Error uploading files:", error);
+      alert(`Failed to upload files. Please try again. ${error}`);
+    }
+  };
+
+  async function uploadFiles(data) {
+    try {
       const response = await fetch(
-        // `${process.env.NEXT_PUBLIC_SERVER_URL}/api/documents/add`,
-        `https://6b797ecf86a859.lhr.life/api/documents/add`,
+        `http://localhost:4003/api/documents/add`,
         {
           method: "POST",
-          body: file,
+          body: data,
         }
       );
-
+  
       if (response.ok) {
         const responseData = await response.json();
-        console.log("Files uploaded successfully: ", responseData);
+        console.log("Files uploaded successfully:", responseData);
+        return { namespaceId: responseData.namespaceId };
       } else {
         throw new Error("Failed to upload files, " + response.statusText);
       }
-    } catch(error) {
-      console.log(error);
+    } catch (error) {
+      console.error("Error uploading files:", error);
+      throw error;
     }
-  };
+  }
 
   const handleDivClick = () => {
     fileInputRef.current.click();
