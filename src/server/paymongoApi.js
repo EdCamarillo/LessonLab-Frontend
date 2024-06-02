@@ -1,25 +1,29 @@
 import axios from 'axios';
 
-//NOTE: POSSIBLE ITEM PARAMETER FOR OTHER ITEM VARIANTS
-const createCheckoutSession = () => {
+const generateReferenceNumber = () => {
+    const timestamp = Date.now();
+    return timestamp.toString();
+};
+
+const createCheckoutSession = (item) => {
+
     const options = {
         method: 'POST',
         url: 'https://api.paymongo.com/v1/checkout_sessions',
         headers: {
             accept: 'application/json',
-            'content-type': 'application/json',
-            authorization: 'Basic c2tfdGVzdF9OR2NkSGNSUEJGN3NvRmFDVE1rdUs1RWU6' //encoded key
+            'Content-type': 'application/json',
+            authorization: `Basic ${process.env.REACT_APP_PM_API_KEY}` //encoded key
         },
         data: {
             data: {
                 attributes: {
                     line_items: [
                         {
-                            //TODO: MAKE TOKEN PRODUCT WITH COMPLETE ATTRIBUTES
-                            amount: 11111,
-                            currency: 'PHP',
-                            description: 'Eeeeee',
-                            name: 'E Token',
+                            amount: item.amount,
+                            currency: item.currency,
+                            description: item.description,
+                            name: item.name,
                             quantity: 1
                         }
                     ],
@@ -43,13 +47,15 @@ const createCheckoutSession = () => {
                     payment_method_types: ['gcash'],
 
                     //TODO: MAKE REFERENCE NUMBER GENERATOR (maybe timestamp-based)
-                    reference_number: '123456789',
+                    reference_number: generateReferenceNumber(),
                     send_email_receipt: true,
                     show_description: true,
                     show_line_items: true,
                     //TODO: MAKE REAL SUCCESS AND CANCEL URL
-                    success_url: 'https://cdn-attachments.timesofmalta.com/02c58df7f6f1f76f66f4067cd24a572e06cb5ec9-1624095247-17558216-1200x630.jpg',
-                    cancel_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley',
+                    // success_url: 'https://cdn-attachments.timesofmalta.com/02c58df7f6f1f76f66f4067cd24a572e06cb5ec9-1624095247-17558216-1200x630.jpg',
+                    success_url: 'http://localhost:3000/',
+                    //TODO: HANDLE EXPIRE SESSION WHEN CANCEL
+                    cancel_url: `http://localhost:3000/cancel_payment`,
 
                     //TODO: MAKE CHECKOUT DESCRIPTION
                     description: 'checkout description'
@@ -61,4 +67,38 @@ const createCheckoutSession = () => {
     return axios.request(options);
 }
 
-export default createCheckoutSession;
+const expireSession = (checkout_session_Id) => {
+    const options = {
+        method: 'POST',
+        headers: {
+          accept: 'application/json',
+          authorization: `Basic ${process.env.REACT_APP_PM_API_KEY}`
+        }
+      };
+      
+      fetch('https://api.paymongo.com/v1/checkout_sessions/checkout_session_Id', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+
+    return axios.request(options);
+}
+
+const getSession = (checkout_session_Id) => {
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          authorization: `Basic ${process.env.REACT_APP_PM_API_KEY}`
+        }
+      };
+      
+      fetch('https://api.paymongo.com/v1/checkout_sessions/checkout_session_id', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
+
+    return axios.request(options);
+}
+
+export {createCheckoutSession, expireSession, getSession};
