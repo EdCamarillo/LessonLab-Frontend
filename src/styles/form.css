@@ -12,6 +12,18 @@
     align-items: center;
 }
 
+.lessonlabText{
+    display: inline-block;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.lessonlabText:hover{
+    transform: translateY(-10px);
+    color: #f1c41b;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -28,8 +40,7 @@
 }
 
 .input {
-    width: 100%;
-    min-width: 375px;
+    width: 450px;
     padding: 10px;
     font-size: 16px;
     border-radius: 4px;
@@ -64,14 +75,14 @@
     color: white;
 }
 
-.sign-up-button {
+.secondButton {
     background-color: #161718;
     border-radius: 4px;
     border: 2px solid #f1c41b;
     color: #fff;
 }
   
-.sign-up-button:hover {
+.secondButton:hover {
     background-color: #ad8c13;
     border-color: #ad8c13;
 }

@@ -1,7 +1,5 @@
 .item {
-    background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 200px;
     height: 300px;
@@ -13,6 +11,9 @@
     justify-content: center;
     text-align: center;
     position: relative;
+    color: white;
+    background-color: #5a5a5a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .item:hover {
