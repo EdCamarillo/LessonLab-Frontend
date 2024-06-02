@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/item.css';
 import icon from '../assets/icon.png';
-import createCheckoutSession from '../server/paymongoApi.js';
+import {createCheckoutSession} from '../server/paymongoApi.js';
 
 export function Item ({item}){
 
@@ -33,6 +33,7 @@ export function Item ({item}){
     try {
       const response = await createCheckoutSession(item);
       if (response && response.data) {
+        console.log(response.data.data);
         window.open(response.data.data.attributes.checkout_url, '_blank');
       } else {
         console.error("Invalid response data:", response);
