@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import icon from '../assets/icon.png';
 import '../styles/form.css';
+import {login} from '../server/userController.js';
 
 const LoginForm = ({ onSwitchToSignUp }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('teacher');
+
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -19,12 +21,79 @@ const LoginForm = ({ onSwitchToSignUp }) => {
     setUserType(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+
+  // const handleLogin = async (user) =>{
+  //   try {
+  //     const response = login(user);
+  //     if(response === 400)
+  //       alert("Invalid username or password");
+  //     else if(response === null)
+  //       alert("Login error!");
+  //     else
+  //       alert("Login Successful");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('User Type:', userType);
+    const user = { username, password };
+
+    try {
+      const token = await login(user);
+
+      if (token && token !== 1) {
+        localStorage.setItem('token', token);
+        window.location.href = '/';
+      }else if(token === 1){
+        alert("Invalid username or password!");
+      } 
+      else {
+        alert("Client error!");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert("An error occurred. Please try again later.");
+    }
+    // try {
+    //   // const response = await fetch(`${process.env.REACT_APP_BASE_URL}api/users/login`, {
+    //     const response = await fetch(`https://e5a3-112-208-66-166.ngrok-free.app/api/users/login`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       username: username,
+    //       password: password,
+    //     }),
+    //   });
+  
+    //   if (response.ok) {
+    //     console.log(response.data);
+    //     const token = await response.text();
+    //     // const token = data;
+    //     // const token = response.token;
+    //     // const token = response;
+
+    //     // const token = login(user);
+
+    //     if (token) {
+    //       // Store the token (e.g., in local storage)
+    //       localStorage.setItem('token', token);
+    //       window.location.href = '/';
+    //       // Optionally, you can redirect the user to another page after successful login
+    //       // Example: window.location.href = '/dashboard';
+    //     }
+    //   } else if (response.status >= 400) {
+    //     alert("Invalid username or password!");
+    //   } else{
+    //     alert("Login failed. Please try again.");
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    //   alert("An error occurred. Please try again later.");
+    // }
   };
 
   return (
@@ -67,8 +136,8 @@ const LoginForm = ({ onSwitchToSignUp }) => {
           </select>
         </div>
         <div className="button-container">
-            <button type="submit" className="button">Login</button>
             <button type="button" className="button secondButton" onClick={onSwitchToSignUp}>Sign-up</button>
+            <button type="submit" className="button">Login</button>
         </div>
       </form>
     </div>

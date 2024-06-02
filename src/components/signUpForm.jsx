@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import icon from '../assets/icon.png';
 import '../styles/form.css';
+import { register } from '../server/userController.js';
 
 const SignupForm = ({ onSwitchToLogin }) => {
   const [username, setUsername] = useState('');
@@ -24,13 +25,74 @@ const SignupForm = ({ onSwitchToLogin }) => {
     setUserType(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  // const user = {username: username, password: password};
+
+  // const handleSignUp = async (user) =>{
+  //   try {
+  //     const response = register(user);
+  //     if(response === 400)
+  //       alert("Username already exist!");
+  //     else
+  //       alert("Sign-up Successful!");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
-    console.log('User Type:', userType);
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    const user = {username: username, password: password};
+
+    try {
+      const response = await register(user);
+
+      if(response)
+        window.location.href = '/';
+      else
+        alert("Username already exist!");
+    } catch (error) {
+      console.error('Error:', error);
+      alert("An error occurred. Please try again later.");
+    }
+    // try {
+    //   // const response = await fetch(`${process.env.REACT_APP_BASE_URL}api/users/register`, {
+    //     const response = await fetch(`https://e5a3-112-208-66-166.ngrok-free.app/api/users/register`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       username: username,
+    //       password: password,
+    //     }),
+    //   });
+  
+    //   if (response.ok) {
+    //     // Registration successful
+    //     alert("Registration successful!");
+    //     console.log(response.data);
+    //     // Optionally, you can redirect the user to another page after successful registration
+    //     // Example: window.location.href = '/login';
+    //     window.location.href = '/';
+        
+    //   } else if (response.status === 400) {
+    //     // Bad request: username already exists
+    //     alert("Username already exists. Please choose a different username.");
+    //   } else {
+    //     // Registration failed
+    //     alert("Registration failed. Please try again.");
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    //   alert("An error occurred. Please try again later.");
+    // }
   };
   
 

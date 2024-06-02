@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import icon from '../assets/icon.png';
 import profileIcon from '../assets/profileIcon.png';
 import '../styles/header.css';
@@ -12,7 +12,7 @@ import SignUpForm from './signUpForm.jsx';
 const Header = () => {
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true); //TODO: Handle authentication
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //TODO: Handle authentication
   const [isLoginForm, setIsLoginForm] = useState(true);
 
   const closeForm = () =>{
@@ -29,6 +29,22 @@ const Header = () => {
   };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if token exists in localStorage
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+      setIsFormOpen(false); // Close form if user is already logged in
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    window.location.href = '/';
+  };
+
 
   //TENTATIVE ITEMS, SHOULD BE REAL ITEMS DATA
   const items = [
@@ -48,8 +64,8 @@ const Header = () => {
           <span className="name">LessonLab</span>
         </div>
         <button className='buy-button' onClick={closeShop}>Shop</button>
-        {isLoggedIn ? <button className='login-button' onClick={closeForm}>Login</button> : null}
-        <Overlay isOpen={isFormOpen || isLoggedIn===false} onClose={closeForm} overlayName={"LessonLab"}>
+        {!isLoggedIn ? <button className='login-button' onClick={closeForm}>Login</button> : null}
+        <Overlay isOpen={isFormOpen} onClose={closeForm} overlayName={"LessonLab"}>
         <div className='items'>
             {isLoginForm ? <LoginForm onSwitchToSignUp={switchForm} /> : <SignUpForm  onSwitchToLogin={switchForm}/>}
           </div>
@@ -61,7 +77,16 @@ const Header = () => {
           ))}
           </div>
         </Overlay>
-        <img src={profileIcon} alt="Profile" className="profile-button"/> 
+        {isLoggedIn && (
+          <div className="profile-button-container">
+            <img src={profileIcon} alt="Profile" className="profile-button" />
+            <div className="dropdown-menu">
+              <button>Profile</button>
+              <button>Settings</button>
+              <button onClick={handleLogout} >Logout</button>
+            </div>
+          </div>
+        )} 
       </div>
     </div>
   );
