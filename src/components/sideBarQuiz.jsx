@@ -42,10 +42,9 @@ const SideBarQuiz = () => {
     console.log(files);
 
     const formData = new FormData();
-    formData.append('materialId', materialId);
+    formData.append('namespaceId', "c3ea4b2b-c325-4c80-8a16-967ac68c0fd8"); // CHANGE THIS IN BACKEND SIDE
     files.forEach(file => {
-      const fileId = uuidv4();
-      formData.append(fileId, file);
+      formData.append('files', file);
     });
 
     try {
