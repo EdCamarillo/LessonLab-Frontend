@@ -1,3 +1,9 @@
+#sideBar-container {
+    max-height: 100vh;
+    overflow-y: auto;
+    position: fixed;
+    box-sizing: border-box;
+}
 .sideBar-lesson {
     background-color: #2d2b2c;
     width: 400px;
@@ -5,6 +11,8 @@
     position: fixed;
     box-sizing: border-box;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 .docu2 h1 {
     margin: 0px;
@@ -100,6 +108,8 @@
 }
 .files {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 .files h1, .specifications h1, .pages h1 {
     margin: 0px;
@@ -113,8 +123,7 @@
     font-family: 'Sansation Light', sans-serif;
     margin: 0px 0px 0px 0px;
 }
-.files{
-    height: 30%;
+.uploaded-files {
     display: flex;
     flex-direction: column;
 }

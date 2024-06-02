@@ -94,6 +94,8 @@
 }
 .files {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 .files h1, .specifications h1, .pages h1 {
     margin: 0px;
@@ -106,11 +108,6 @@
     color: white;
     font-family: 'Sansation Light', sans-serif;
     margin: 0px 0px 0px 0px;
-}
-.files{
-    height: 30%;
-    display: flex;
-    flex-direction: column;
 }
 .specifications, .pages{
     height: 35%;
