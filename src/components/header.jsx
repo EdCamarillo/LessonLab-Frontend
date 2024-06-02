@@ -7,19 +7,26 @@ import { Overlay } from './overlay.jsx';
 import { Item } from './item.jsx'
 import { useNavigate } from 'react-router-dom';
 import LoginForm from './loginForm.jsx';
+import SignUpForm from './signUpForm.jsx';
 
 const Header = () => {
   const [isShopOpen, setIsShopOpen] = useState(false);
-  const [isLoginFormOpen, setIsLoginFormOpen] = useState(true); //set to False if samok
+  const [isFormOpen, setIsFormOpen] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(true); //TODO: Handle authentication
+  const [isLoginForm, setIsLoginForm] = useState(true);
 
-  const closeLoginForm = () =>{
-    setIsLoginFormOpen(!isLoginFormOpen);
+  const closeForm = () =>{
+    setIsFormOpen(!isFormOpen);
+    setIsLoginForm(true);
   }
 
   const closeShop = ()=>{
     setIsShopOpen(!isShopOpen)
   }
+
+  const switchForm = () => {
+    setIsLoginForm(!isLoginForm);
+  };
 
   const navigate = useNavigate();
 
@@ -41,10 +48,10 @@ const Header = () => {
           <span className="name">LessonLab</span>
         </div>
         <button className='buy-button' onClick={closeShop}>Shop</button>
-        {isLoggedIn ? <button className='login-button' onClick={closeLoginForm}>Login</button> : null}
-        <Overlay isOpen={isLoginFormOpen} onClose={closeLoginForm} overlayName={"Login"}>
-          <div className='items'>
-            <LoginForm/>
+        {isLoggedIn ? <button className='login-button' onClick={closeForm}>Login</button> : null}
+        <Overlay isOpen={isFormOpen || isLoggedIn===false} onClose={closeForm} overlayName={"LessonLab"}>
+        <div className='items'>
+            {isLoginForm ? <LoginForm onSwitchToSignUp={switchForm} /> : <SignUpForm  onSwitchToLogin={switchForm}/>}
           </div>
         </Overlay>
         <Overlay isOpen={isShopOpen} onClose={closeShop} overlayName={"Token Shop"}>
