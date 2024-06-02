@@ -26,12 +26,6 @@
     box-sizing: border-box;
     position: relative;
 }
-.Lesson {
-    width: 24px;
-    height: 24px;
-    float: left;
-    margin-top: 0px;
-}
 .more-icon-lesson {
     width: 20px; 
     height: auto; 

@@ -1,10 +1,12 @@
-.sideBar-lesson {
+.sideBar-quiz {
     background-color: #2d2b2c;
     width: 400px;
     height: 100%;
     position: fixed;
     box-sizing: border-box;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 .docu2 h1 {
     margin: 0px;
@@ -22,12 +24,6 @@
     display: flex;
     padding: 10px;
     box-sizing: border-box;
-}
-.Lesson {
-    width: 24px;
-    height: 24px;
-    float: left;
-    margin-top: 0px;
 }
 .more-icon-lesson {
     width: 20px; 

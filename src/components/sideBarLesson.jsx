@@ -7,7 +7,7 @@ import ClockIcon from '../assets/clockIcon.png';
 import HatIcon from '../assets/hatIcon.png';
 import FIcon from '../assets/fIcon.png';
 import addButton from '../assets/addButton.png';
-import { MoreHoriz, Close, Upload, DeleteOutline, Add } from '@mui/icons-material';
+import { MoreHoriz, Close, Upload, DeleteOutline, Add, ImportContactsOutlined } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
 import Download from '../assets/download.png';
 import Import from '../assets/import.png';
@@ -116,7 +116,7 @@ const SideBarLesson = () => {
       <div id="sideBar-container" style={{ userSelect: 'none' }}>
         <div className="sideBar-lesson">
           <div className="docu2" ref={dropdownRef}>
-            <img src={Lesson2} alt="lesson" className="Lesson" />
+            <ImportContactsOutlined className="lesson-icon"/>
             <h1>Design Patterns</h1>
             <MoreHoriz className="more-icon-lesson" onClick={() => toggleDropdown("designPatterns")} />
             {activeDropdown === "designPatterns" && (
