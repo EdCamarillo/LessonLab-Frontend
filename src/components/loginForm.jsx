@@ -19,12 +19,39 @@ const LoginForm = ({ onSwitchToSignUp }) => {
     setUserType(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('User Type:', userType);
+    // console.log('Username:', username);
+    // console.log('Password:', password);
+    // console.log('User Type:', userType);
+    try {
+      const response = await fetch('https://6cea32f6df2b70.lhr.life/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+      if (response.ok) {
+        // Registration successful
+        alert("Login successful!");
+        console.log(response.body);
+        // Optionally, you can redirect the user to another page after successful registration
+        // Example: window.location.href = '/login';
+      }else if (response.status === 400) {
+        // Bad request: username already exists
+        alert("Invalid username or password!");
+      } else {
+        alert("Registration failed. Please try again.");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert("An error occurred. Please try again later.");
+    }
   };
 
   return (
@@ -67,8 +94,8 @@ const LoginForm = ({ onSwitchToSignUp }) => {
           </select>
         </div>
         <div className="button-container">
-            <button type="submit" className="button">Login</button>
             <button type="button" className="button secondButton" onClick={onSwitchToSignUp}>Sign-up</button>
+            <button type="submit" className="button">Login</button>
         </div>
       </form>
     </div>
