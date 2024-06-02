@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, createTheme, ThemeProvider, styled } from '@mui/material';
-import '../styles/login.css';
+import '../styles/form.css';
 
 const LoginForm = () => {
     const navigate = useNavigate();
