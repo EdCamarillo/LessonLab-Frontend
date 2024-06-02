@@ -8,6 +8,7 @@ import Icon from '../assets/icon.png'
 import ImportFill from '../assets/importFill.png'
 import ExportFill from '../assets/exportFill.png'
 import '../styles/lesson.css';
+import { MaterialContent } from './materialContent';
 
 const LessonComponent = () => {
   return (
@@ -29,11 +30,22 @@ const LessonComponent = () => {
             </div>
       </div>
       <div className='lesson-docu'>
+        <div className='h-full w-full'>
+                <div className={"whitespace-pre-wrap max-w-fit w-full"}>
+                  <MaterialContent message={"Placeholder"} />
+                </div>
+
+              {/* {isLoading && (
+                <div className="animate-pulse bg-gray-500 h-4 w-4 rotate-45 rounded-sm"></div>
+              )} */}
+              <div className={'h-[70%]'}></div>
+        </div>
       </div>
-            <div className='Btns2'>
+            {/* <div className='Btns2'>
             <img src={ExportFill} alt="exportFill" className='exportFill' />
             <img src={ImportFill} alt="importFill" className='importFill' />
-            </div>
+            </div> */}
+            
     </div>
   );
 };
