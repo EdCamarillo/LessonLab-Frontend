@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import '../styles/sideBar.css';
+import '../../../styles/sideBar.css';
 import { ImportContactsOutlined, ArticleOutlined, MoreHoriz } from '@mui/icons-material';
 import DocumentDropdownMenu from './documentDropdownMenu';
 

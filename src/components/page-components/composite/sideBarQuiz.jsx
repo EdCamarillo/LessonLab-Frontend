@@ -1,17 +1,19 @@
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import AddButton from '../assets/addButton.png';
-import BookIcon from '../assets/bookIcon.png';
-import ClockIcon from '../assets/clockIcon.png';
-import HatIcon from '../assets/hatIcon.png';
-import FIcon from '../assets/fIcon.png';
-import { MoreHoriz, Close, Upload, DeleteOutline, Add, ImportContactsOutlined } from '@mui/icons-material';
-import DocumentDropdownMenu from './documentDropdownMenu';
-import Note from '../assets/note.png';
-import '../styles/sideBarLesson.css';
-// import '../styles/specifications.css';
+import BookIcon from '../../../assets/bookIcon.png';
+import ClockIcon from '../../../assets/clockIcon.png';
+import HatIcon from '../../../assets/hatIcon.png';
+import FIcon from '../../../assets/fIcon.png';
+import { MoreHoriz, Close, Upload, DeleteOutline, Add, ArticleOutlined, ImportContactsOutlined   } from '@mui/icons-material';
+import DocumentDropdownMenu from '../base/documentDropdownMenu';
+import Note from '../../../assets/note.png';
+import '../../../styles/sideBarQuiz.css';
+import '../../../styles/sideBarPopUp.css';
+import { v4 as uuidv4 } from 'uuid';
+import { useParams } from 'react-router-dom';
 
-const SideBarLesson = () => {
+
+const SideBarQuiz = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [popupContent, setPopupContent] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -19,6 +21,7 @@ const SideBarLesson = () => {
   const dropdownRef = useRef(null);
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
+  const { materialId } = useParams();
 
   const togglePopup = (content) => {
     setPopupContent(popupContent === content ? null : content);
@@ -34,10 +37,50 @@ const SideBarLesson = () => {
     }
   };
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const files = Array.from(event.target.files).filter(file => file.type === 'application/pdf');
-    setUploadedFiles([...uploadedFiles, ...files]);
+    console.log(files);
+
+    const formData = new FormData();
+    formData.append('namespaceId', "c3ea4b2b-c325-4c80-8a16-967ac68c0fd8"); // CHANGE THIS IN BACKEND SIDE
+    files.forEach(file => {
+      formData.append('files', file);
+    });
+
+    try {
+      const data = await uploadFiles(formData);
+      console.log("Files uploaded successfully:", data);
+      if (data) {
+        setUploadedFiles([...uploadedFiles, ...files]);
+      }
+    } catch (error) {
+      console.error("Error uploading files:", error);
+      alert(`Failed to upload files. Please try again. ${error}`);
+    }
   };
+
+  async function uploadFiles(data) {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_NEXT_PUBLIC_SERVER_URL}/api/documents/add`,
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Files uploaded successfully:", responseData);
+        return { namespaceId: responseData.namespaceId };
+      } else {
+        throw new Error("Failed to upload files, " + response.statusText);
+      }
+    } catch (error) {
+      console.error("Error uploading files:", error);
+      throw error;
+    }
+  }
 
   const handleDivClick = () => {
     fileInputRef.current.click();
@@ -103,24 +146,23 @@ const SideBarLesson = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
   return (
     <div>
       {popupContent && <div className="overlay" onClick={() => setPopupContent(null)}></div>}
-      <div id="sideBar-container" style={{ userSelect: 'none' }}>
-        <div className="sideBar-lesson">
-          <div className="docu2" ref={dropdownRef}>
-            <ImportContactsOutlined className="lesson-icon"/>
+    <div id="sideBar-container" style={{ userSelect: 'none' }}>
+      <div className="sideBar-quiz">
+      <div className="docuQuiz" ref={dropdownRef}>
+           <ImportContactsOutlined className="quiz-icon"/>
             <h1>Design Patterns</h1>
-            <MoreHoriz className="more-icon-lesson" onClick={() => toggleDropdown("designPatterns")} />
+            <MoreHoriz className="more-icon-quiz" onClick={() => toggleDropdown("designPatterns")} />
             {activeDropdown === "designPatterns" && (
               <DocumentDropdownMenu type="Lesson" />
             )}
           </div>
-          <div className="line"></div>
-          <div className="files">
-            <h1>Files</h1>
-            <div
+        <div className='line'></div>
+        <div className='filesQuiz'>
+        <h1>Files</h1>
+        <div
               className="addFile"
               style={{ display: showAddFile || uploadedFiles.length === 0 ? 'block' : 'none' }}
               onClick={handleDivClick}
@@ -151,8 +193,9 @@ const SideBarLesson = () => {
                 <button className="upload-new-button" onClick={handleDivClick}><Upload /> Upload New</button>
               </div>
             )}
-          </div>
-          <div className="line"></div>
+        </div>
+        
+        <div className="line"></div>
           <div className="specifications">
             <div className="specifications-header">
               <h1>Specifications</h1>
@@ -162,13 +205,12 @@ const SideBarLesson = () => {
           <div className="line"></div>
           <div className="pages">
             <div className="pages-header">
-              <h1>Pages</h1>
-              <Add className="add-button" onClick={() => togglePopup('pages')}/>
+              <h1>Items</h1>
+              <Add className="add-button" onClick={() => togglePopup('items')}/>
             </div>
           </div>
-        </div>
-
-        {popupContent && (
+    </div>
+    {popupContent && (
           <div className="popup-container-lesson">
             <div className="popup-content-lesson">
               <span className="popup-close" onClick={() => setPopupContent(null)}>
@@ -176,7 +218,7 @@ const SideBarLesson = () => {
               </span>
               {popupContent === 'specifications' && (
                 <>
-                  <h1>Specifications Name 1</h1>
+                  <h1>Specificationssssss Name 1</h1>
                   <div className="topic">
                     <img src={BookIcon} alt="Icon" />
                     <input type="text" placeholder="Provide a topic..." />
@@ -217,13 +259,13 @@ const SideBarLesson = () => {
                       Comprehensive
                     </label>
                   </div>
-                  <div className="learningOutcomes">
-                    <img src={BookIcon} alt="Icon" />
-                    <textarea type="text" placeholder="Provide learning outcomes..." />
-                  </div>
+                  <div className='checkBoxProblemSolving'>
+                    <input type="checkbox" name="myCheckbox"/>
+                    <label for="checkbox">Include problem solving</label>
+                    </div>
                   <div className="custom">
                     <button>
-                      <img src={AddButton} alt="Icon" id="addCustom" /> Add Custom
+                    <Add/> Add Custom
                     </button>
                   </div>
                   <div className="button">
@@ -231,7 +273,7 @@ const SideBarLesson = () => {
                   </div>
                 </>
               )}
-              {popupContent === 'pages' && (
+              {popupContent === 'items' && (
                 <>
                   <h1>Add New Page(s)</h1>
                   <div className="presets">
@@ -240,14 +282,38 @@ const SideBarLesson = () => {
                       <option value="" disabled selected>Select specifications presets...</option>
                     </select>
                   </div>
-                  <div className="pages">
+                  <div className="AddNewPages">
                     <img src={Note} alt="Icon" />
                     <input type="text" placeholder="Set pages..." />
+                    <div className='checkBoxNamePage'>
+                    <input type="checkbox" name="myCheckbox"/>
+                    <label for="checkbox">Name each page</label>
+                    </div>
+                    <div className="itemType">
+                      <img src={FIcon} alt="Icon" />
+                      <label>
+                        <input type="radio" name="multiplechoice" value="multipleChoice" />
+                        Multiple Choice
+                      </label>
+                      <label>
+                        <input type="radio" name="identification" value="identification" />
+                        Identification
+                      </label>
+                      <label>
+                        <input type="radio" name="trueOrFalse" value="trueOrFalse" />
+                        True or False
+                      </label>
+                      <label>
+                        <input type="radio" name="diverse" value="diverse" />
+                        Diverse
+                      </label>
+                    </div>
+                    
                   </div>
-                  <div className="buttonAdd">
+                  <div className="buttonAddItemQuiz">
                     <button>Add</button>
                   </div><br />
-                  <div className="button">
+                  <div className="buttonGenerateItemQuiz">
                     <button>Add & Generate</button>
                   </div>
                 </>
@@ -255,10 +321,9 @@ const SideBarLesson = () => {
             </div>
           </div>
         )}
-      </div>
-    </div>
+        </div>
+          </div>
   );
 };
 
-
-export default SideBarLesson;
+export default SideBarQuiz;

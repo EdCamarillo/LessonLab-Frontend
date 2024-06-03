@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../styles/sideBar.css';
-import addButton from '../assets/addButton.png';
+import '../../../styles/sideBar.css';
+import addButton from '../../../assets/addButton.png';
 import DocumentItem from './documentItem';
 
 const SideBar = () => {

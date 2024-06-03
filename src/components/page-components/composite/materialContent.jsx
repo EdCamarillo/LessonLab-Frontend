@@ -2,10 +2,9 @@ import { Message } from 'ai'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
-import { cn } from '../utils/utils'
-import { CodeBlock } from '@/components/ui/codeblock'
-import { MemoizedReactMarkdown } from '@/components/ui/markdown'
-import { IconPinecone, IconUser } from '@/components/ui/icons'
+import { cn } from '../../../utils/utils'
+import { CodeBlock } from '../base/new/codeblock'
+import { MemoizedReactMarkdown } from '../base/new/markdown'
 // import { ChatMessageActions } from '@/components/chat/chat-message-actions'
 
 export function MaterialContent({ message, ...props }) {
@@ -22,7 +21,6 @@ export function MaterialContent({ message, ...props }) {
               : 'bg-primary text-primary-foreground'
           )}
         >
-          {message.role === 'user' ? <IconUser className='size-6 text-black' /> : <IconPinecone />}
         </div>
         <div className="flex-1 px-1 ml-4 space-y-2 overflow-visible">
           <MemoizedReactMarkdown

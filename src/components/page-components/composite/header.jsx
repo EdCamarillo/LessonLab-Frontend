@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import icon from '../assets/icon.png';
-import profileIcon from '../assets/profileIcon.png';
-import '../styles/header.css';
-import '../styles/addNewDocumentPopUpWindow.css';
-import { Overlay } from './overlay.jsx';
-import { Item } from './item.jsx'
+import icon from '../../../assets/icon.png';
+import profileIcon from '../../../assets/profileIcon.png';
+import '../../../styles/header.css';
+import '../../../styles/addNewDocumentPopUpWindow.css';
+import { Overlay } from '../base/overlay.jsx';
+import { Item } from '../../transaction/item.jsx'
 import { useNavigate } from 'react-router-dom';
 import LoginForm from './loginForm.jsx';
-import SignUpForm from './signUpForm.jsx';
+import SignUpForm from '../signUpForm.jsx';
 
 const Header = () => {
   const [isShopOpen, setIsShopOpen] = useState(false);

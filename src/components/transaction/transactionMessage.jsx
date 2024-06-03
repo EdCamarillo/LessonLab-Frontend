@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import '../styles/message.css';
+import '../../styles/message.css';
 
 const TransactionMessage = ({text}) =>{
 
