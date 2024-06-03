@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../components/header'
-import SideBarQuiz from '../components/sideBarQuiz'
-import QuizComponent from '../components/quizComponent'
+import Header from '../components/page-components/composite/header'
+import SideBarQuiz from '../components/page-components/composite/sideBarQuiz'
+import QuizComponent from '../components/page-components/composite/quizComponent'
 
 const Quiz = () => {
   return (

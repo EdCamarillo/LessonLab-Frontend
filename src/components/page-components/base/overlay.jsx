@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import '../styles/overlay.css';
+import '../../../styles/overlay.css';
 
 export function Overlay({isOpen, onClose, children, overlayName}){
     useEffect(() => {

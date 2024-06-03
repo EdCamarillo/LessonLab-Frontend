@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import icon from '../assets/icon.png';
-import '../styles/form.css';
+import icon from '../../../assets/icon.png';
+import '../../../styles/form.css';
 
-const SignupForm = ({ onSwitchToLogin }) => {
+const LoginForm = ({ onSwitchToSignUp }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [userType, setUserType] = useState('teacher');
 
-  const handleEmailChange = (e) => {
+  const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
   };
 
   const handleUserTypeChange = (e) => {
@@ -29,15 +24,13 @@ const SignupForm = ({ onSwitchToLogin }) => {
     // Handle form submission logic here
     console.log('Username:', username);
     console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
     console.log('User Type:', userType);
   };
-  
 
   return (
-    <div className="container sign-up-form">
-      <img src={icon} alt="LessonLab Icon" className="icon" />
-      <h2 className="lessonlabText">Join us now and get started!</h2>
+    <div className="container login-form">
+        <img src={icon} alt="LessonLab Icon" className="lessonlabIcon" />
+        <h2 className="lessonlabText">Welcome back!<br/>Log in to continue.</h2>
       <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <label htmlFor="Username" className="label">Username:</label>
@@ -45,7 +38,7 @@ const SignupForm = ({ onSwitchToLogin }) => {
             type="Username"
             id="Username"
             value={username}
-            onChange={handleEmailChange}
+            onChange={handleUsernameChange}
             className="input"
             required
           />
@@ -57,17 +50,6 @@ const SignupForm = ({ onSwitchToLogin }) => {
             id="password"
             value={password}
             onChange={handlePasswordChange}
-            className="input"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="confirmPassword" className="label">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
             className="input"
             required
           />
@@ -85,12 +67,12 @@ const SignupForm = ({ onSwitchToLogin }) => {
           </select>
         </div>
         <div className="button-container">
-          <button type="button" className="button secondButton" onClick={onSwitchToLogin}>Back</button>
-          <button type="submit" className="button">Confirm</button>
+            <button type="submit" className="button">Login</button>
+            <button type="button" className="button secondButton" onClick={onSwitchToSignUp}>Sign-up</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default SignupForm;
+export default LoginForm;

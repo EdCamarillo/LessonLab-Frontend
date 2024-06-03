@@ -1,18 +1,17 @@
-import icon from '../assets/icon.png';
-import profileIcon from '../assets/profileIcon.png';
-import { Link, useNavigate } from 'react-router-dom';
-import AddPage from '../assets/addPage.png'
-import Up from '../assets/up.png'
-import Down from '../assets/down.png'
-import Icon from '../assets/icon.png'
-import ImportFill from '../assets/importFill.png'
-import ExportFill from '../assets/exportFill.png'
-import '../styles/lesson.css';
+// import icon from '../assets/icon.png';
+// import profileIcon from '../assets/profileIcon.png';
+// import { Link, useNavigate } from 'react-router-dom';
+import AddPage from '../../../assets/addPage.png'
+import Up from '../../../assets/up.png'
+import Down from '../../../assets/down.png'
+import Icon from '../../../assets/icon.png'
+import ImportFill from '../../../assets/importFill.png'
+import ExportFill from '../../../assets/exportFill.png'
+import '../../../styles/lesson.css';
 
-const LessonComponent = () => {
+const QuizComponent = () => {
   return (
     <div id="lesson-container">
-      {/* <h1>Lesson</h1> */}
       <div className='top'>
          <h2>Design Patterns Info</h2>
             <h3 id='addPage'>
@@ -38,4 +37,4 @@ const LessonComponent = () => {
   );
 };
 
-export default LessonComponent;
+export default QuizComponent;

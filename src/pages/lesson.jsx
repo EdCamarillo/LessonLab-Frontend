@@ -1,6 +1,6 @@
-import Header from '../components/header';
-import SideBarLesson from '../components/sideBarLesson';
-import LessonComponent from '../components/lessonComponent';
+import Header from '../components/page-components/composite/header';
+import SideBarLesson from '../components/page-components/composite/sideBarLesson';
+import LessonComponent from '../components/page-components/composite/lessonComponent';
 
 const Lesson = () => {
   return (

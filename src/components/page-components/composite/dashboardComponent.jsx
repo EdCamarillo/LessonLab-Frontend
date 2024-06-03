@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import '../styles/dashboard.css';
-import icon from '../assets/icon.png';
-import Lesson from '../assets/lesson.png';
-import Quiz from '../assets/quiz.png';
-import '../styles/addNewDocumentPopUpWindow.css';
-import addNewDocument from '../assets/addNewDocument.png';
+import '../../../styles/dashboard.css';
+import icon from '../../../assets/icon.png';
+import Lesson from '../../../assets/lesson.png';
+import Quiz from '../../../assets/quiz.png';
+import '../../../styles/addNewDocumentPopUpWindow.css';
+import addNewDocument from '../../../assets/addNewDocument.png';
 import { Close } from '@mui/icons-material';
 
 const DashboardComponent = () => {

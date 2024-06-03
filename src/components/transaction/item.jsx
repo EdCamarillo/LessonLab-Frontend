@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../styles/item.css';
-import icon from '../assets/icon.png';
-import {createCheckoutSession} from '../server/paymongoApi.js';
+import '../../styles/item.css';
+import icon from '../../assets/icon.png';
+import {createCheckoutSession} from '../../server/paymongoApi.js';
 
 export function Item ({item}){
 

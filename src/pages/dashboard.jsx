@@ -1,6 +1,6 @@
-import Header from '../components/header';
-import SideBar from '../components/sideBar';
-import DashboardComponent  from '../components/dashboardComponent';
+import Header from '../components/page-components/composite/header';
+import SideBar from '../components/page-components/base/sideBar';
+import DashboardComponent  from '../components/page-components/composite/dashboardComponent';
 
 const Dashboard = () => {
   return (
